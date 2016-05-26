@@ -1,0 +1,56 @@
+.blk_18 {
+ FONT-SIZE: 12px;OVERFLOW: hidden;WIDTH: 1165px;ZOOM: 1
+}
+.blk_18 .pcont {
+ FLOAT: left; OVERFLOW: hidden; WIDTH: 1050px
+}
+.blk_18 .ScrCont {
+ WIDTH: 32766px; ZOOM: 1
+}
+.blk_18 #List1_1 {
+ FLOAT: left
+}
+.blk_18 #List2_1 {
+ FLOAT: left
+}
+.blk_18 #List1_2 {
+ FLOAT: left
+}
+.blk_18 #List2_2 {
+ FLOAT: left
+}
+.blk_18 .LeftBotton {
+BACKGROUND: url(../images/left.png) no-repeat; FLOAT: left; MARGIN: 70px 20px 25px 0px; WIDTH: 35px; HEIGHT: 35px
+}
+.blk_18 .RightBotton {
+BACKGROUND: url(../images/right.png) no-repeat; FLOAT: right; MARGIN: 70px 1px; WIDTH: 35px; HEIGHT: 35px
+}
+.blk_18 .LeftBotton {
+ BACKGROUND-POSITION: 0px 0px; MARGIN-LEFT: 5px
+}
+.blk_18 .RightBotton {
+ BACKGROUND-POSITION: 0px 0px; MARGIN-LEFT: -1px
+}
+
+.blk_18 .pl IMG {
+MARGIN:0px; CURSOR: pointer; BORDER-STYLE: none;margin-bottom:10px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius:3px;
+	border:1px solid #eaeaea;
+}
+.blk_18 .pl {
+ FLOAT: left;WIDTH:211px;TEXT-ALIGN: center;
+}
+.blk_18 .pl a{
+font-size:14px;color:#000;
+}
+.blk_18 A.pl:hover {
+ BACKGROUND: #fff; 
+}
+.commu_cont3 {
+ MARGIN: 9px 7px 7px; LINE-HEIGHT: 150%
+}
+.commu_cont3 UL {
+ WIDTH: 188px
+}

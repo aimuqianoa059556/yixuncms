@@ -1,0 +1,12 @@
+	<{foreach $pro as $row}>
+		<div class="order">
+			<div class="pic"><img src="<{$public}>/uploads/phoimg/<{$row.pic}>"/></div>
+			<div class="pcon">
+				<{$row.title}><br>
+				<br style="margin-bottom:10px;">
+				<a href="<{$url}>/productshow/id/<{$row.id}>">了解详情</a>
+			</div>
+		</div>
+	<{foreachelse}>
+		加载错误……
+	<{/foreach}>

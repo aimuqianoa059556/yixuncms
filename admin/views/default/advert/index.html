@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC
+          "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<{include file="public/head.html"}>
+		<div id="main">
+		  	<div class="head-dark-box">
+				<div class="tit">后台管理 > 广告位管理 > 管理广告位</div>
+			</div>	
+			<{ include file="public/title.html" }>
+		    <form name="article" method="post" action="<{$url}>/order" enctype="multipart/form-data">
+			<div class="msg-box">
+				<ul class="viewmess">
+					<li class="dark-row">
+						<span class="list_width width_font" style="width:250px;">广告图位置</span>
+						<span class="list_width width_font" style="width:100px;">是否显示</span>
+						<span class="list_width width_font">操&nbsp;&nbsp;作</span>
+					</li>
+				        <{ section name=doc loop=$plays }>
+						<{if $plays[doc].wz eq 1}>
+							<{$wz="首页横幅"}>
+						<{elseif $plays[doc].wz eq 2}>
+							<{$wz="单页左侧"}>
+						<{elseif $plays[doc].wz eq 3}>
+							<{$wz="文章列表页左侧"}>
+						<{elseif $plays[doc].wz eq 4}>
+							<{$wz="文章内容页左侧"}>							
+						<{elseif $plays[doc].wz eq 5}>
+							<{$wz="展示列表页左侧"}>							
+						<{elseif $plays[doc].wz eq 6}>
+							<{$wz="展示内容页左侧"}>							
+						<{/if}>	
+							<li class="<{if $smarty.section.doc.index is even}>light-row<{else}>dark-row<{/if}>" style="<{if $plays[doc].display eq 0}>background:#FAECBA;<{/if}>padding-top:2px; padding-bottom:2px">
+					
+							<span class="list_width" style="width:260px;"><input type="text" name="ord[]" style="width:15px" maxlength="3" value="<{ $plays[doc].ord }>" class="text-box">&nbsp;<{ $wz }></span>
+						
+							<input type="hidden" name="ids[]" value="<{ $plays[doc].id }>">							
+							<span class="list_width <{if $plays[doc].endtime le $smarty.now and $plays[doc].endtime ne '0'}>red_font<{/if}>" style="width:60px;"><{if $plays[doc].display eq 0}>不显示<{else}>显示<{/if}></span>
+				
+							<span class="list_width" style="width:120px;">
+						
+							【<a href="<{$url}>/mod/id/<{ $plays[doc].id }>">修改</a>】
+							【<a onclick="return confirm('确定要删除焦点图片【<{ $plays[doc].title }>】吗？')" href="<{$url}>/del/id/<{ $plays[doc].id }>">删除</a>】
+							</span>
+						</li>
+					<{ sectionelse }>
+						<li class="light-row">
+							暂无焦点图
+						</li>
+					<{ /section }>
+				
+					<li class="dark-row">
+						<span class="col_width" style="margin-left:20px;width:540px"> 
+							<input class="button" name="order" type="submit" value="改变显示顺序">
+  							 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<a style='<{if $smarty.get.action eq "1"}>background:#888;color:white<{/if}>' href="<{$url}>/index/action/1">显示</a>&nbsp;|
+							<a style='<{if $smarty.get.action eq "2"}>background:#888;color:white<{/if}>' href="<{$url}>/index/action/2">不显示</a>&nbsp;&nbsp;
+						 </span> 
+					
+					</li>
+				</ul>	
+			</div>
+                    </form>	
+		</div>
+<{include file="public/footer.html"}>	
+
+

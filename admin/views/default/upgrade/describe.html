@@ -1,0 +1,39 @@
+<{include file="public/head.html"}>
+		<div id="main">
+		  	<div class="head-dark-box">
+				<div class="tit">后台管理 > 维护更新 > 数据表结构</div>
+			</div>	
+			<{ include file="public/title.html" }>
+			<form action="<{$url}>/order" method="post">
+			<div class="msg-box">
+				<ul class="viewmess">
+					<li class="dark-row">
+						<span class="list_width width_font" style="width:150px;">字段名称</span>
+						<span class="list_width width_font" style="width:175px;">类型</span>
+						<span class="list_width width_font" style="width:50px;">为空</span>
+						<span class="list_width width_font" style="width:80px;">默认</span>
+						<span class="list_width width_font" style="width:150px;">额外</span>
+					</li>
+					<{ section name=doc loop=$describe }>
+					<li class="<{if $smarty.section.doc.index is even}>light-row<{else}>dark-row<{/if}>" style="padding-top:5px; padding-bottom:5px">
+						<span class="list_width" style="width:150px"><{$describe[doc].Field}></span>
+						<span class="list_width" style="width:180px"><{$describe[doc].Type}></span>
+						<span class="list_width" style="width:50px"><{$describe[doc].Null}></span>
+						<span class="list_width" style="width:75px"><{if $describe[doc].Default eq ''}>&nbsp;<{else}><{$describe[doc].Default}><{/if}></span>
+						<span class="list_width" style="width:145px"><{if $describe[doc].Extra eq ''}>&nbsp;<{else}><{$describe[doc].Extra}><{/if}></span>
+					</li>
+					<{ sectionelse }>
+						<li class="light-row" style="padding-left:10px;">
+							本页没有扩展.
+						</li>					
+					<{/section}>
+					<li class="dark-row">
+					&nbsp;&nbsp;&nbsp;&nbsp;提示：以上结构信息仅为参考信息，便于升级前后对比，如需调整结构可通过执行SQL语句或登陆数据库管理面板进行.
+					</li>					
+				</ul>	
+			</div>
+			</form>
+		</div>
+<{include file="public/footer.html"}>	
+
+

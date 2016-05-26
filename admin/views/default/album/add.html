@@ -1,0 +1,39 @@
+<{include file="public/head.html"}>	
+		<div id="main">
+			<div class="head-dark-box">
+				<div class="tit">图集管理 > 管理图集 > 添加图集</div>
+			</div>	
+		    <{ include file="public/title.html" }>
+		    <form  method="post" action="<{$url}>/insert">
+			<div class="msg-box">
+				<ul class="viewmess">
+					<li class="light-row">
+						<span class="col_width">上级相册</span>
+							<{ $select }>	<label for="jz"><input id="jz" type="checkbox" name="jz" <{$jz}> value="1"> 记住选项</label>
+						</li>
+					<li class="dark-row">
+						<span class="col_width">相册标题<span class="red_font">*</span></span>
+						<input type="text" class="text-box" name="title" size="20" value="<{ $post.title }>">
+					</li>
+					<li class="light-row">
+						<span class="col_width" style="margin-top:30px">相册描述<span class="red_font">*</span></span>
+						<textarea class="text-box" name="description" cols="30" rows="5"><{ $post.description }></textarea>
+					</li>
+					<li class="dark-row">
+						<span class="col_width">是否审核</span>
+						<input type="radio" name="display" value="1" <{if $post.display eq "1" or $post.display eq ""}>checked<{/if}>/>是
+						<input type="radio" name="display" value="0" <{if $post.display eq "0"}>checked<{/if}>/>否
+					</li>
+					<li class="light-row">
+						<span class="col_width"> &nbsp; </span>
+						<input type="submit" class="button" value="添 加">&nbsp;&nbsp;
+						<input type="reset" class="button" value="重 置">
+					</li>
+				</ul>	
+			</div>
+                    </form>	
+		</div>
+<{include file="public/footer.html"}>	
+
+
+

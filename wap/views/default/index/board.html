@@ -1,0 +1,17 @@
+<{include file="public/head-2.html"}>
+<div class="member-top">在线留言<img src="<{$res}>/images/menu-btn-2.gif" class="member-btn-2"></div>
+	<div class="content">
+	<div><{$mess}></div>
+	<form action="<{$url}>/boardinsert" method="post">
+      <input type="text" name="nickname" placeholder="您的姓名" required="required" class="radiu in"/>
+      <input type="tel" name="telephone" placeholder="联系电话" pattern="[0-9]{11}" title="请输入11位手机号码" required="required" class="radiu in">
+      <input type="text" name="address" placeholder="地址" required="required" class="radiu in">	  
+      <input type="email" name="email" placeholder="电子邮件" required="required" class="radiu in">
+      <input type="text" name="msn" placeholder="QQ/MSN" pattern="[\d]{6,10}" title="QQ号码必须为6-10位的数字" required="required" class="radiu in">
+      <input type="text" name="title" placeholder="留言主题" required="required" class="radiu in">
+      <textarea name="content" placeholder="留言内容" required="required" class="radiu in"></textarea>
+      <input type="submit" value="提交留言" class="login-btn radiu"> 
+	  </form>
+	</div>
+	<div class="clear"></div>
+<{include file="public/footer.html"}>

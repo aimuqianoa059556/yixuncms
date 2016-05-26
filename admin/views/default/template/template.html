@@ -1,0 +1,26 @@
+<{include file="public/head.html"}>
+		<div id="main">
+		  	<div class="head-dark-box">
+				<div class="tit">后台管理 > 模板编辑 > 编辑模板代码</div>
+			</div>
+			<{ include file="public/title.html" }>
+			<div class="msg-box">
+			<form action="<{$url}>/update" method="post">
+				<ul class="viewmess">
+					<li>
+						<div style="padding:10px;">
+							<textarea name="content" class="text-box" style="padding:10px 0;width:100%;height:500px;line-height:20px;"><{$file}></textarea>
+						</div>
+					</li>
+					<li class="dark-row">
+						<span class="col_width">&nbsp;  </span>
+						<input type="hidden" name="path" value="<{$path}>">
+						<input type="submit" class="button"  value="修改模板代码">
+					</li>					
+				</ul>
+			</form>
+			</div>
+		</div>
+<{include file="public/footer.html"}>	
+
+

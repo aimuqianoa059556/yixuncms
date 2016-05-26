@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<title><{$appname}></title>
+<link type="text/css" rel="stylesheet" href="<{$res}>/css/wap.css">
+<script src="<{$res}>/js/jquery.js"></script>
+<script src="<{$res}>/js/wap.js"></script>
+<script src="<{$res}>/js/marquee.js"></script>
+</head>
+
+<body>
+<div id="pane1" style="top:53px;">
+	<ul>
+	<{foreach $menu as $row}>
+		<li><a href="<{$app}><{$row.url}>"><{$row.title}></a></li>
+	<{/foreach}>
+	</ul>
+</div>

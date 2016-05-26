@@ -1,0 +1,8 @@
+<{include file="public/head.html"}>
+<{foreach $about as $row}>
+	<div class="aboutcloum j-right"><{$row.title}></div>
+		<div class="aboutcontent">
+			<{$row.content|replace:"&quot;":'"'|replace:"&#039;":"'"}>
+		</div>
+<{/foreach}>
+<{include file="public/footer.html"}>

@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC
+          "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<{include file="public/head.html"}>
+		<div id="main">
+		  	<div class="head-dark-box">
+				<div class="tit">后台管理 > 幻灯管理 > 修改幻灯</div>
+			</div>	
+			<{ include file="public/title.html" }>
+		    <form name="article" method="post" action="<{$url}>/update" enctype="multipart/form-data">
+			<div class="msg-box">
+				<ul class="viewmess">
+					<li class="light-row">
+						<span class="col_width">文章地址<span class="red_font">*</span></span>
+						article/aid/<{$article.aid}>
+						<input type="hidden" name="id" value="<{$article.id}>">
+					</li>
+					<li class="dark-row">
+						<span class="col_width">幻灯标题<span class="red_font">*</span></span>
+						 <input type="text" class="text-box" name="title" maxlength="80" size="40" value="<{ $article.title }>">
+					</li>
+					<li class="light-row">
+					
+						<span class="col_width">幻灯图片<span class="red_font">*</span></span>
+						<span id="logo">
+						<img  style="cursor:pointer;" src="<{$public}>/uploads/play/<{$article.pic}>" alt="图片预览" width=100 height="100" title="点击查看大图" onclick="change();">
+						<input type="button" class="button" onclick="change();" value="更换幻灯">
+						</span>
+						<script>
+							function change(){
+								var logo=document.getElementById("logo");
+								logo.innerHTML='<input type="file" name="pic" class="button">&nbsp;上传后原图片将被自动删除.图片须小于2M';
+							}
+						</script>
+					</li>
+					<li class="dark-row">
+						<span class="col_width">开始日期<span class="red_font">*</span></span>
+						<{$starttime}> &nbsp;
+					
+					</li>
+					<li class="light-row">
+						<span class="col_width">失效日期<span class="red_font">*</span></span>
+						<{$endtime}> &nbsp;<input type="button" onclick="document.getElementById('endtime').value=''" class="button" value="清空">&nbsp;(设置留空则为长期显示)
+					</li>
+
+				
+					<li class="dark-row">
+						<span class="col_width">是否显示</span>
+						
+						<input type="radio" name="display"  <{if $article.display eq "1" or $article.display eq null}> checked <{/if}> value="1"> 是
+						<input type="radio" name="display" <{if $article.display eq "0" }> checked <{/if}> value="0"> 否
+					</li>
+					<li class="light-row">
+						<span class="col_width">&nbsp;  </span>
+						<input type="submit" class="button" value="修改幻灯">&nbsp;&nbsp;
+						<input type="reset" class="button" value="重置幻灯">
+					</li>
+				</ul>	
+			</div>
+                    </form>	
+		</div>
+<{include file="public/footer.html"}>	
+
+

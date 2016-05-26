@@ -1,0 +1,1 @@
+<?php {"pri":"id","0":"groupname","1":"description","2":"useradmin","3":"webadmin","4":"articleadmin","5":"sendcomment","6":"photoadmin","7":"jobadmin","8":"boardadmin","9":"funadmin"}yes

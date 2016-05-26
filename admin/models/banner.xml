@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<input name="title" type="notnull" msg="焦点图名称不能为空" />
+	<input name="links" type="notnull" msg="链接地址不能为空" />
+</form>

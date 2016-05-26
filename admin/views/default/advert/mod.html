@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC
+          "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<{include file="public/head.html"}>
+		<div id="main">
+		  	<div class="head-dark-box">
+				<div class="tit">后台管理 > 广告图管理 > 修改广告图</div>
+			</div>	
+			<{ include file="public/title.html" }>
+		    <form name="article" method="post" action="<{$url}>/update" enctype="multipart/form-data">
+			<div class="msg-box">
+				<ul class="viewmess">
+					<li class="dark-row">
+						<span class="col_width">广告图标题<span class="red_font">*</span></span>
+						<select name="wz" class="text-box">
+							<option value="1" <{if $post.wz eq 1}>selected<{/if}>>首页横幅</option>
+							<option value="2" <{if $post.wz eq 2}>selected<{/if}>>单页左侧</option>
+							<option value="3" <{if $post.wz eq 3}>selected<{/if}>>文章列表页左侧</option>
+							<option value="4" <{if $post.wz eq 4}>selected<{/if}>>文章内容页左侧</option>
+							<option value="5" <{if $post.wz eq 5}>selected<{/if}>>展示列表页左侧</option>
+							<option value="6" <{if $post.wz eq 6}>selected<{/if}>>展示内容页左侧</option>
+						</select>
+					</li>
+					<li class="light-row">
+						<span class="col_width">广告图片<span class="red_font">*</span></span>
+						<span id="logo">
+						<img  style="cursor:pointer;" src="<{$public}>/uploads/advert/<{$post.pic}>" alt="图片预览" width="200" title="点击查看大图" onclick="change();">
+						<input type="button" class="text-box" onclick="change();" value="更换广告图">
+						</span>
+						<script>
+							function change(){
+								var logo=document.getElementById("logo");
+								logo.innerHTML='<input type="file" name="pic" class="text-box">&nbsp;上传后原图片将被自动删除.图片须小于2M';
+							}
+						</script>
+					</li>
+					<li class="dark-row">
+						<span class="col_width">链接地址<span class="red_font">*</span></span>
+						<input type="text" class="text-box" name="links" maxlength="80" size="40" value="<{ $post.links }>">
+					</li>
+					<li class="dark-row">
+						<span class="col_width">是否显示</span>
+						
+						<input type="radio" name="display"  <{if $post.display eq "1" or $post.display eq null}> checked <{/if}> value="1"> 显示
+						<input type="radio" name="display" <{if $post.display eq "0" }> checked <{/if}> value="0"> 不显示
+					</li>
+					<li class="light-row">
+						<span class="col_width">&nbsp;  </span>
+						<input type="hidden" name="id" value="<{$post.id}>">&nbsp;&nbsp;
+						<input type="submit" class="button" value="修改广告图">&nbsp;&nbsp;
+						<input type="reset" class="button" value="重置广告图">
+					</li>
+				</ul>	
+			</div>
+                    </form>	
+		</div>
+<{include file="public/footer.html"}>	
+
+

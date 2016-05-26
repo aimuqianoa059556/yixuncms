@@ -1,0 +1,51 @@
+<{include file="public/head.html"}>
+	<!--content-->
+	<div class="clear"></div>
+	<div class="pagewidth content">
+		<div class="left">
+		<{foreach $artcol as $row}>
+			<div class="title blocktitle leftcolumn"<{if $row@iteration ne 1}> style="margin-top:10px;"<{/if}>><{$row.title}><span>-</span></div>
+			<div class="bottombor">
+				<ul class="aboutcolumn">
+				<{foreach $row.scolumn as $son}>
+					<li><a href="<{$url}>/index/pid/<{$son.id}>" title="<{$son.title}>" class="btn"><{$son.title}></a></li>
+				<{/foreach}>
+				<div class="clear"></div>	
+				</ul>
+			</div>
+		<{/foreach}>
+		<{foreach $ad as $adv}>
+			<a href="<{$adv.links}>" target="_blank"><img src="<{$public}>/uploads/advert/<{$adv.pic}>" style="margin-top:8px;width:100%;"/></a>
+		<{/foreach}>
+			<div class="title blocktitle" style="margin-top:10px;">联系方式</div>
+			<div class="bottombor con2">
+				<{$contact}>
+			</div>			
+		</div>
+		<div class="right">
+			<div class="title blocktitle">首页 / 新闻中心 <{foreach $locs as $row}>/ <{$row.title}> <{/foreach}>/ <{$article.title}></div>
+			<div class="bottombor con2">
+				<div style="text-align:center;font-size:20px;"><{$article.title}></div>
+				<div style="border:1px solid #eaeaea;text-align:center;padding:10px 0px;margin:25px 0px;background:#F6F6F6;">
+				更新时间：<{$article.posttime|date_format:"%Y-%m-%d"}>　　来源：<{$article.comefrom}>　　浏览：<{nocache}><{$views.views}><{/nocache}>
+				</div>
+				<div style="line-height:30px;"><{$article.content}></div>
+			</div>
+			<div class="bottombor con2">
+				上一篇： 
+				<{ if $prevArticle eq false }>
+				已经是第一篇文章
+				<{ else }>
+				<a href="<{$url}>/article/aid/<{ $prevArticle.id }>"><{ $prevArticle.title|truncate:100 }></a>
+				<{ /if }> | 
+				下一篇：
+				<{ if $nextArticle eq false }>
+				已经是最后一篇文章
+				<{ else }>
+				<a href="<{$url}>/article/aid/<{ $nextArticle.id }>"><{ $nextArticle.title|truncate:100 }></a>
+				<{ /if }>
+			</div>
+		</div>
+	</div>
+	<!--footer-->
+<{include file="public/footer.html"}>

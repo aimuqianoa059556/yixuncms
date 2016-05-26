@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC
+          "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<{include file="public/head.html"}>
+		<div id="main">
+		  	<div class="head-dark-box">
+				<div class="tit">后台管理 > 手机网站管理 > 添加图片</div>
+			</div>	
+			<{ include file="public/title.html" }>
+		    <form name="article" method="post" action="<{$url}>/insert" enctype="multipart/form-data">
+			<div class="msg-box">
+				<ul class="viewmess">
+					<li class="dark-row">
+						<span class="col_width">图片名称<span class="red_font">*</span></span>
+						 <input type="text" class="text-box" name="title" maxlength="80" size="40" value="<{ $post.title }>">
+					</li>
+					<li class="light-row">
+						<span class="col_width">上传图片<span class="red_font">*</span></span>
+						<input type="file" name="pic" class="text-box"/>
+					</li>
+					<li class="dark-row">
+						<span class="col_width">链接地址<span class="red_font">*</span></span>
+						<input type="text" class="text-box" name="links" maxlength="80" size="40" value="<{ $post.links }>">
+					</li>
+					<li class="light-row">
+						<span class="col_width">&nbsp;  </span>
+						<input type="submit" class="button" value="添加图片">&nbsp;&nbsp;
+						<input type="reset" class="button" value="重置图图">
+					</li>
+				</ul>	
+			</div>
+                    </form>	
+		</div>
+<{include file="public/footer.html"}>	
+
+

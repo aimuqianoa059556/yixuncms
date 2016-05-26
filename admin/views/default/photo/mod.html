@@ -1,0 +1,61 @@
+<{include file="public/head.html"}>
+		<div id="main">
+		  	<div class="head-dark-box">
+				<div class="tit">后台管理 > 展示管理 > 修改展示</div>
+			</div>	
+			<{ include file="public/title.html" }>
+		    <form name="article" method="post" action="<{$url}>/update/page/<{$smarty.get.page}><{if $smarty.get.pid}>/pid/<{$smarty.get.pid}><{/if}><{if $smarty.get.search}>/search/<{$smarty.get.search}><{/if}><{if $smarty.get.audit}>/audit/<{$smarty.get.audit}><{/if}>" enctype="multipart/form-data">
+			<div class="msg-box">
+				<ul class="viewmess">
+					<li class="dark-row">
+						<span class="col_width">展示类别 <span class="red_font">*</span> </span>
+						  <{ $select }>&nbsp;&nbsp;请选择
+					</li>
+					<li class="light-row">
+						<span class="col_width">展示名称 <span class="red_font">*</span> </span>
+						<input type="text" class="text-box" name="title" size="30" value="<{ $post.title }>" maxlength="40">
+					</li>
+					<li class="dark-row">
+						<span class="col_width" style="margin-top:25px">展示摘要</span>
+						<textarea class="text-box" name="summary" cols="40" rows="4"><{ $post.summary }></textarea>&nbsp;&nbsp;小于100个汉字.
+					</li>
+					<li class="dark-row">
+						<span class="col_width">缩略图 <span class="red_font"></span> </span>
+						<span id="logo">
+							<img src="<{$public}>/uploads/phoimg/<{$post.pic}>" width="100" onclick="change();" title="图片必须小于2M" />
+							<input type="button" class="button" onclick="change();" title="图片必须小于2M" value="更换缩略图">
+						</span>
+						<script>
+							function change(){
+								var logo=document.getElementById("logo");
+								logo.innerHTML='<input type="file" name="pic" class="button" >&nbsp;图片必须≤2M.';
+							}
+						</script>
+					</li>			
+					<li class="dark-row">
+						<span class="col_width">首页推荐</span>
+						<input type="radio"  name="recommend" <{if $post.recommend eq 1}>checked<{/if}>  value="1"> 推荐
+						<input type="radio"  name="recommend" <{if $post.recommend eq 0}>checked<{/if}> value="0"> 不推荐
+					</li>
+					<li class="light-row">
+						<span class="col_width">展示点亮</span>
+						<input type="radio"  name="top" <{if $post.top eq 1}>checked<{/if}>  value="1"> 点亮
+						<input type="radio"  name="top" <{if $post.top eq 0}>checked<{/if}> value="0"> 不点亮
+					</li>
+					<li class="light-row" style="margin:0px; padding:0px">
+						<textarea cols="80" rows="10" name="content"><{$post.content}></textarea>
+						<{$ck}>
+					</li>
+					<li class="dark-row">
+						<span class="col_width">&nbsp;  </span>
+						<input type="hidden" name="id" value="<{$post.id}>" />
+						<input type="submit" class="button"  value="修 改">&nbsp;&nbsp;
+						<input type="reset" class="button" value="重 置">
+					</li>
+				</ul>	
+			</div>
+                    </form>	
+		</div>
+<{include file="public/footer.html"}>	
+
+

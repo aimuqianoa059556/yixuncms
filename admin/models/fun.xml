@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<form>
+	<input name="title" type="notnull" msg="标题名称不能为空" />
+</form>	

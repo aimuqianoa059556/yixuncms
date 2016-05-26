@@ -1,0 +1,28 @@
+<{include file="public/head.html"}>
+	<!--content-->
+	<div class="clear"></div>
+	<div class="pagewidth content">
+			<div class="title blocktitle">首页 / 公司风采 / <{$locs.title}></div>
+			<div class="bottombor con3" style="text-align:right;">
+				<{foreach $album as $row}>
+					<a href="<{$app}>/photo/prcture/pid/<{$row.id}>" title="<{$row.description}>" class="btn"><{$row.title}></a>
+				<{/foreach}>
+			</div>
+			<div class="bottombor con3">
+				<ul class="smallimg">
+				<{foreach $photos as $row}>
+					<li<{if $row@iteration mod 3 eq 0}> style="margin-right:0px;"<{/if}>>
+						<a href="<{$public}>/uploads/prcture/<{$row.name}>" id="smallimg" title="<{$row.title}>" class="thickbox">
+							<img src="<{$public}>/uploads/prcture/<{if $row.thumb eq 1}>th_<{$row.name}><{else}><{$row.name}><{/if}>" width="335" height="230">
+						</a>
+					</li>
+				<{foreachelse}>
+				当前图集下暂无相片
+				<{/foreach}>
+				<div class="clear"></div>
+				</ul>
+				<div class="fpage"><{$fpage}></div>
+			</div>
+	</div>
+	<!--footer-->
+<{include file="public/footer.html"}>

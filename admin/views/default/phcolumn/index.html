@@ -1,0 +1,27 @@
+<script>
+	var url='<{$url}>';
+</script>
+<{include file="public/head.html"}>
+	<div id="main">
+		<div class="head-dark-box">
+			<div class="tit">基本管理 > 产品栏目管理 > 管理产品栏目</div>
+		</div>
+		<{include file="public/title.html"}>
+		<form action="<{$url}>/ord" method="post">
+		<div class="msg-box">
+			<ul class="viewmess">
+				<li class="dark-row">
+					<span class="col_width2 width_font">栏目名称</span>
+					<span class="width_font">操作</span>
+				</li>
+				<{$list}>
+				<li class="light-row">
+					<span class="col_width">
+						<input type="submit" name="order" value="重新排序" class="button" />
+					</span>
+				</li>
+			</ul>
+		</div>
+		</form>
+	</div>
+<{include file="public/footer.html"}>

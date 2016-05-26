@@ -1,0 +1,28 @@
+<{include file="public/head.html"}>
+	<!--content-->
+	<div class="clear"></div>
+	<div class="pagewidth content">
+			<div class="title blocktitle">首页 / 人才招聘</div>
+			<div class="bottombor con3">
+				<{foreach $jobs as $job}>
+					<div class="job <{if $job@iteration is even}>rfloat<{else}>lfloat<{/if}>">
+						<div class="jobtitle lfloat">招聘职位：<{$job.title}></div>
+						<div class="clear"></div>
+						<div style="background-color:#fff;">
+						<div class="jobcontent">
+							<span class="j">招聘人数：<{$job.number}>人</span><span>薪资代遇：<{if $job.treatment eq '0'}>面议<{else}><{$job.treatment}>元/月<{/if}></span><br>
+							<span class="j">结束时间：<{if $job.endtime eq 0}>长期<{else}><{$job.endtime|date_format:"%Y-%m-%d"}><{/if}></span><span>工作地点：<{$job.address}></span>
+							<div class="jc">
+							<{$job.content|replace:"&quot;":'"'|replace:"&#039;":"'"}>
+							</div>
+						</div>
+						</div>
+					</div>
+					<{if $job@iteration is even}><div class="clear"></div><{/if}>
+				<{foreachelse}>
+				暂无聘用信息，欢迎浏览其它内容...
+				<{/foreach}>
+			</div>
+	</div>
+	<!--footer-->
+<{include file="public/footer.html"}>

@@ -1,0 +1,39 @@
+<{include file="public/head.html"}>
+	<div id="main">
+		<div class="head-dark-box">
+			<div class="tit">移动网站管理->常规管理->基本设置</div>
+		</div>	
+		<{include file="public/title.html" }>
+		<form  method="post" action="<{$url}>/wapset" enctype="multipart/form-data">
+			<div class="msg-box">
+				<ul class="viewmess">
+					<li class="light-row">
+						<span class="col_width">公告显示数目</span>
+						<input type="text" class="text-box" name="noticle" size="5" value="<{$varList.noticlePageSize}>">
+						&nbsp;&nbsp;条
+					</li>
+					<li class="dark-row">
+						<span class="col_width">文章显示数目</span>
+						<input type="text" class="text-box" name="news" size="5" value="<{$varList.newsPageSize}>">	
+						&nbsp;&nbsp;篇 / 屏
+					</li>
+					<li class="light-row">
+						<span class="col_width">产品显示数目</span>
+						<input type="text" class="text-box" name="waphotosize" size="5" value="<{$varList.waphotosize}>">	
+						&nbsp;&nbsp;篇 / 屏
+					</li>					
+					<li class="dark-row">
+						<span class="col_width">页脚版权信息</span>
+						<input type="text" class="text-box" name="wapcopy" size="30" value="<{$varList.wapcopy}>">
+						移动设备分辨率低于PC机，版权信息不宜过长
+					</li>					
+					<li class="light-row">
+						<span class="col_width">&nbsp;</span>
+						<input type="submit" class="button" name="mod" value="修 改">&nbsp;&nbsp;
+						<input type="reset" class="button" value="重 置">
+					</li>
+				</ul>	
+			</div>
+		</form>
+	</div>
+<{include file="public/footer.html"}>

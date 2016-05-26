@@ -1,0 +1,18 @@
+<{include file="public/head-2.html"}>
+	<div class="member-top">企业招聘<img src="<{$res}>/images/menu-btn-2.gif" class="member-btn-2"></div>
+	<div class="content">
+		<{foreach $jobs as $job}>
+			<div class="order">
+				职位：<{$job.title}><br>
+				人数：<{$job.number}><br>
+				代遇：<{if $job.treatment eq '0'}>面议<{else}><{$job.treatment}>元/月<{/if}><br>
+				地点：<{$job.address}><br>
+				要求：<{$job.content|replace:"&quot;":'"'|replace:"&#039;":"'"}><br>
+					<br style="margin-bottom:10px;">
+			</div>
+		<{foreachelse}>
+			加载错误……
+		<{/foreach}>
+	</div>
+	<div class="clear"></div>
+<{include file="public/footer.html"}>

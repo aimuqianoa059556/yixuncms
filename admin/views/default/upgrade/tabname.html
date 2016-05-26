@@ -1,0 +1,37 @@
+<{include file="public/head.html"}>
+		<div id="main">
+		  	<div class="head-dark-box">
+				<div class="tit">后台管理 > 维护更新 > 查看数据表</div>
+			</div>	
+			<{ include file="public/title.html" }>
+			<form action="<{$url}>/order" method="post">
+			<div class="msg-box">
+				<ul class="viewmess">
+					<li class="dark-row">
+						<span class="list_width width_font" style="width:150px;">数据表名称</span>
+						<span class="list_width width_font">操&nbsp;&nbsp;作</span>
+					</li>
+					<{ section name=doc loop=$table }>
+					<li class="<{if $smarty.section.doc.index is even}>light-row<{else}>dark-row<{/if}>" style="padding-top:5px; padding-bottom:5px">
+						<span class="list_width" style="width:145px">
+							<{$table[doc].$dbname}>
+						</span>
+						<span class="list_width">
+							【<a title="数据表结构" href="<{$url}>/describe/tabname/<{$table[doc].$dbname}>">结构</a>】						
+							【<a title="删除数据表" onclick="return confirm('删除数据表【<{$table[doc].$dbname}>】会造成数据无法正常调用，这是一个不可逆转的操作，确认要删除吗？')" href="<{$url}>/deltable/tabname/">删除</a>】
+						</span>
+					</li>
+					<{ sectionelse }>
+						<li class="light-row" style="padding-left:10px;">
+							本页没有数据表.
+						</li>					
+					<{/section}>
+					<li class="dark-row">
+					</li>					
+				</ul>	
+			</div>
+			</form>
+		</div>
+<{include file="public/footer.html"}>	
+
+

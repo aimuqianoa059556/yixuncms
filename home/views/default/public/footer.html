@@ -1,0 +1,23 @@
+	<div class="clear"></div>
+	<div class="flink">
+		<div class="pagewidth">友情链接：
+			<{ section name=ls loop=$links }>
+				<a href="<{ $links[ls].url }>" target="_blank">
+					<{ if $links[ls].list }>
+						<img width="88" height="31" alt="<{ $links[ls].webname }>" src="<{$public}>/uploads/logos/<{ $links[ls].logo }>" border="0" style="vertical-align:middle;margin-right:5px;">
+					<{else}>
+						<{ $links[ls].webname }>
+					<{/if}>
+				</a>
+			<{ /section }>
+		</div>
+	</div>
+	<div class="footer">
+<{$copy}><{$icp}>
+<script language="javascript" type="text/javascript" src="http://js.users.51.la/17561189.js"></script>
+<noscript><a href="http://www.51.la/?17561189" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/17561189.asp" style="border:none" /></a></noscript><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1255517076'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1255517076%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script>
+<!--在线客服-->
+<script language="JavaScript" src="http://code.54kefu.net/kefu/js/116/760716.js" type="text/javascript" charset="utf-8"></script>
+	</div>
+</body>
+</html>

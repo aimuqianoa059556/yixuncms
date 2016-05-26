@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC
+          "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<{include file="public/head.html"}>
+		<div id="main">
+		  	<div class="head-dark-box">
+				<div class="tit">后台管理 > 焦点图管理 > 添加焦点图</div>
+			</div>	
+			<{ include file="public/title.html" }>
+		    <form name="article" method="post" action="<{$url}>/insert" enctype="multipart/form-data">
+			<div class="msg-box">
+				<ul class="viewmess">
+					<li class="dark-row">
+						<span class="col_width">焦点图标题<span class="red_font">*</span></span>
+						 <input type="text" class="text-box" name="title" maxlength="80" size="40" value="<{ $post.title }>">
+					</li>
+					<li class="light-row">
+						<span class="col_width">焦点图片<span class="red_font">*</span></span>
+						<input type="file" name="pic" class="button" />
+					</li>
+					<li class="dark-row">
+						<span class="col_width">链接地址<span class="red_font">*</span></span>
+						<input type="text" class="text-box" name="links" maxlength="80" size="40" value="<{ $post.links }>">
+					</li>
+					<li class="dark-row">
+						<span class="col_width">是否显示</span>
+						
+						<input type="radio" name="display"  <{if $post.display eq "1" or $post.display eq null}> checked <{/if}> value="1"> 显示
+						<input type="radio" name="display" <{if $post.display eq "0" }> checked <{/if}> value="0"> 不显示
+					</li>
+					<li class="light-row">
+						<span class="col_width">&nbsp;  </span>
+						<input type="submit" class="button" value="添加焦点图">&nbsp;&nbsp;
+						<input type="reset" class="button" value="重置焦点图">
+					</li>
+				</ul>	
+			</div>
+                    </form>	
+		</div>
+<{include file="public/footer.html"}>	
+
+

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<form>
+	<input name="title" type="notnull" msg="导航名称不能为空！" />
+	<input name="title" type="unique" action="add" msg="导航名称已经存在！" />
+	<input name="url" type="notnull" msg="链接地址不能为空" />
+</form>	

@@ -1,0 +1,35 @@
+<{include file="public/head.html"}>
+	<!--content-->
+	<div class="clear"></div>
+	<div class="pagewidth content">
+		<div class="left">
+		<{foreach $phc as $row}>
+			<div class="title blocktitle leftcolumn"<{if $row@iteration ne 1}> style="margin-top:10px;"<{/if}>><{$row.title}><span>-</span></div>
+			<div class="bottombor">
+				<ul class="aboutcolumn">
+				<{foreach $row.scolumn as $son}>
+					<li><a href="<{$url}>/index/pid/<{$son.id}>" title="<{$son.title}>" class="btn"><{$son.title}></a></li>
+				<{/foreach}>
+				<div class="clear"></div>	
+				</ul>
+			</div>
+		<{/foreach}>
+		<{foreach $ad as $adv}>
+			<a href="<{$adv.links}>" target="_blank"><img src="<{$public}>/uploads/advert/<{$adv.pic}>" style="margin-top:8px;width:100%;"/></a>
+		<{/foreach}>
+			<div class="title blocktitle" style="margin-top:10px;">联系方式</div>
+			<div class="bottombor con2">
+				<{$contact}>
+			</div>			
+		</div>
+		<div class="right">
+			<div class="title blocktitle">首页 <{foreach $locs as $row}>/ <{$row.title}> <{/foreach}></div>
+			<div class="bottombor con2">
+				<div class="newbigtitle"><{$photo.title}></div>
+				<div class="column">更新时间：<{$photo.posttime|date_format:"%Y-%m-%d"}>  浏览：<{nocache}><{$views.views}><{/nocache}>次</div>
+				<div class="procontent"><{$photo.content}>	</div>				
+			</div>
+		</div>
+	</div>
+	<!--footer-->
+<{include file="public/footer.html"}>

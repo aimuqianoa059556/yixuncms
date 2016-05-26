@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<form>
+	<input name="title" type="notnull" msg="招聘名称不能为空" />
+	<input name="address" type="notnull" msg="工作地址不能为空" />
+	<input name="treatment" type="notnull" msg="工资代遇不能为空" />
+	<input name="treatment" type="currency" msg="工资代遇必须为数字" />
+	<input name="number" type="notnull" msg="招聘人数不能为空" />
+	<input name="number" type="number" msg="招聘人数必须为数字" />
+</form>	

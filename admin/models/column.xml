@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<input name="title" type="notnull" msg="栏目标题不能为空" />
+	<input name="description" type="notnull" msg="栏目描述不能为空" />
+	<input name="picid" type="notnull" msg="请为栏目选择一张图片" />
+</form>

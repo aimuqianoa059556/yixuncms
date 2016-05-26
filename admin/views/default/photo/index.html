@@ -1,0 +1,113 @@
+<{include file="public/head.html"}>
+		<div id="main">
+		  	<div class="head-dark-box">
+				<div class="tit">后台管理 > 展示管理 > 管理展示</div>
+			</div>	
+			<{ include file="public/title.html" }>
+		    <form method="post" action="<{$url}>/fpro/page/<{$page}><{if $smarty.get.pid}>/pid/<{$smarty.get.pid}><{/if}><{if $smarty.get.search}>/search/<{$smarty.get.search}><{/if}><{if $smarty.get.audit}>/audit/<{$smarty.get.audit}><{/if}>">
+			<div class="msg-box">
+				<ul class="viewmess">
+					<li class="light-row">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请按分类选择产品&nbsp;&nbsp; <{$select}>
+					&nbsp;&nbsp; <input id="sea" title="输入展示名称" type="text" value="<{$search}>"> <input type="button" onclick="search()" class="button" value="从分类中搜索">					
+					<script>
+						var sel=document.getElementById("sel");
+						sel.onchange=function(){
+							var pid=this.options[this.selectedIndex].value;//获取下拉列表值
+							window.location="<{$url}>/index/pid/"+pid;//转向本模块下的index操作
+						}
+						function search(){
+							var pid=sel.options[sel.selectedIndex].value;
+							var sval=document.getElementById("sea").value;	
+							window.location="<{$url}>/index/pid/"+pid+"/search/"+sval;
+
+						}
+					</script>					
+					</li>
+					<li class="dark-row">
+						<span class="list_width width_font" style="width:290px">名称</span>
+						<span class="list_width width_font" style="width:50px">添加人</span>
+						<span class="list_width width_font" style="width:100px">添加时间</span>
+						<span class="list_width width_font" style="width:50px">推荐</span>
+						<span class="list_width width_font" style="width:50px">审核</span>
+						<span class="list_width width_font">操&nbsp;&nbsp;作</span>
+					</li>
+					<{ section name=doc loop=$arts }>
+					<li  class="<{if $smarty.section.doc.index is even}>light-row<{else}>dark-row<{/if}>" style="padding-top:2px; padding-bottom:2px">
+						<span class="list_width" style="width:290px">
+							<input type="checkbox" name="id[]" value="<{ $arts[doc].id }>">
+							<span><{$arts[doc].title}></span>
+						</span>
+						<span class="list_width" style="width:50px"><{$arts[doc].username}></span>
+						<span class="list_width" style="width:100px"><{$arts[doc].posttime|date_format:"%Y-%m-%d"}></span>
+						<span class="list_width" style="width:50px" style="width:40px;text-align:center">
+							<{if $arts[doc].recommend eq 1 }>
+								<span title="推荐：<{$arts[doc].title}>" onclick="set(this,'recommend',<{$arts[doc].id}> )" style="color:#FE488B;cursor:pointer;">√</span>
+							<{else}>
+								<span title="取消推荐：<{$arts[doc].title}>" onclick="set(this,'recommend',<{$arts[doc].id}>)" style="color:#0000F6;cursor:pointer;">×</span>
+							<{/if}>						
+						</span>
+						<span class="list_width" style="width:50px" style="width:40px;text-align:center">
+							<{if $arts[doc].audit eq 1 }>
+								<span title="审核：<{$arts[doc].title}>" onclick="set(this,'audit',<{$arts[doc].id}>)" style="color:#FE488B;cursor:pointer;">√</span>
+							<{else}>
+								<span title="取消审核：<{$arts[doc].title}>" onclick="set(this,'audit',<{$arts[doc].id}>)" style="color:#0000F6;cursor:pointer;">×</span>
+							<{/if}>						
+						</span>
+						<span class="list_width">
+							【<a href="<{$url}>/mod/id/<{$arts[doc].id}>/page/<{$page}><{if $smarty.get.pid}>/pid/<{$smarty.get.pid}><{/if}><{if $smarty.get.search}>/search/<{$smarty.get.search}><{/if}><{if $smarty.get.audit}>/audit/<{$smarty.get.audit}><{/if}>">修改</a>】
+							【<a title="删除产品：<{$arts[doc].title}>" onclick="return confirm('确定要删除产品<{ $arts[doc].title }>吗？')" href="<{$url}>/del/id/<{ $arts[doc].id }>/page/<{$page}><{if $smarty.get.pid}>/pid/<{$smarty.get.pid}><{/if}><{if $smarty.get.search}>/search/<{$smarty.get.search}><{/if}><{if $smarty.get.audit}>/audit/<{$smarty.get.audit}><{/if}>">删除</a>】
+						</span>
+					</li>
+					<{ sectionelse }>
+						<li class="light-row">
+							本页没有产品
+						</li>					
+					<{/section}>
+	<script>
+	function set(obj, stat, id){
+		var ajax=Ajax();
+		if(obj.innerHTML=="√"){
+			ajax.get("<{$url}>/status/s/"+stat+"/id/"+id+"/val/0", function(data){
+				if(data=="1"){
+					ieff(obj, "×");
+					obj.style.color="#0000F6";
+				}
+			
+			});
+		}else{
+			ajax.get("<{$url}>/status/s/"+stat+"/id/"+id+"/val/1", function(data){
+				if(data=="1"){
+					ieff(obj, "√");
+					obj.style.color="#FE488B";
+				}
+			});
+		}
+	}
+	</script>					
+					<li class="dark-row">
+						<div class="col_width" style="margin-left:15px;width:100%"> 
+							<a href="javascript:select()">全选</a>/<a href="javascript:fanselect()">反选</a>/<a href="javascript:noselect()">全不选</a>&nbsp;&nbsp;选中项: 
+							<input  name="recommend" type="image" title="推荐"  src="<{$res}>/images/rec02.gif">&nbsp;&nbsp;
+							<input  name="norecommend" type="image" title="取消推荐"  src="<{$res}>/images/rec01.gif">&nbsp;&nbsp;
+						
+							<input  name="audits" type="image" title="审核"  src="<{$res}>/images/audit.gif">&nbsp;&nbsp;
+							<input  name="locks" type="image" title="锁定"  src="<{$res}>/images/lock.gif">&nbsp;&nbsp;
+						
+							<input  name="dels" type="image" title="删除" onClick="return confirm('你确定要删除选中的产品吗?')"  src="<{$res}>/images/delete.gif">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+							<a title="已审核的产品" style='<{if $smarty.get.audit eq "on"}>background:#888;color:white<{/if}>' href="<{$url}>/index/audit/on">已审核</a>&nbsp;|
+							<a title="未审核的产品" style='<{if $smarty.get.audit eq "off"}>background:#888;color:white<{/if}>' href="<{$url}>/index/audit/off">末审核</a>
+							
+						 </div> 
+						<div class="right" style="width:100%;margin-top:10px;">
+							<{$fpage}>
+						</div>
+					</li>					
+				</ul>	
+			</div>
+                    </form>	
+		</div>
+<{include file="public/footer.html"}>	
+
+

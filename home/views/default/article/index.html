@@ -1,0 +1,43 @@
+<{include file="public/head.html"}>
+	<!--content-->
+	<div class="clear"></div>
+	<div class="pagewidth content">
+		<div class="left">
+		<{foreach $artcol as $row}>
+			<div class="title blocktitle leftcolumn"<{if $row@iteration ne 1}> style="margin-top:10px;"<{/if}>><{$row.title}><span>-</span></div>
+			<div class="bottombor">
+				<ul class="aboutcolumn">
+				<{foreach $row.scolumn as $son}>
+					<li><a href="<{$url}>/index/pid/<{$son.id}>" title="<{$son.title}>" class="btn"><{$son.title}></a></li>
+				<{/foreach}>
+				<div class="clear"></div>	
+				</ul>
+			</div>
+		<{/foreach}>
+		<{foreach $ad as $adv}>
+			<a href="<{$adv.links}>" target="_blank"><img src="<{$public}>/uploads/advert/<{$adv.pic}>" style="margin-top:8px;width:100%;"/></a>
+		<{/foreach}>		
+			<div class="title blocktitle" style="margin-top:10px;">联系方式</div>
+			<div class="bottombor con2">
+				<{$contact}>
+			</div>			
+		</div>
+		<div class="right">
+			<div class="title blocktitle">首页 / 新闻中心 <{foreach $locs as $row}>/ <{$row.title}> <{/foreach}></div>
+			<div class="bottombor con2">
+			<{foreach $articles as $row}>
+				<div class="newsblock" title="<{$row.title}>">
+				<div style="width:100px;margin-right:20px;"></div>
+				<{if $row.allow eq 1}><div class="allow"><img src="<{$public}>/images/jl.png"></div><{/if}>
+					<div class="artitle"><span><a href="<{$url}>/article/aid/<{$row.id}>" class="tooltip"><{$row.title}></a></span><{$row.posttime|date_format:"%Y-%m-%d"}></div>
+					<div class="summary"><{$row.summary}></div>
+				</div>
+			<{foreachelse}>
+			该栏目暂无文章，欢迎浏览其它内容...
+			<{/foreach}>
+			<div class="fpage"><{$fpage}></div>
+			</div>
+		</div>
+	</div>
+	<!--footer-->
+<{include file="public/footer.html"}>

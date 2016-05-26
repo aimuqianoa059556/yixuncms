@@ -1,0 +1,25 @@
+<{include file="public/head.html"}>
+		<div id="main">
+		  	<div class="head-dark-box">
+				<div class="tit">后台管理 > 维护更新 > 执行SQL语句</div>
+			</div>
+			<{ include file="public/title.html" }>
+			<div class="msg-box">
+			<form action="<{$url}>/setupsql" method="post">
+				<ul class="viewmess">
+					<li>
+						<div style="padding:10px;">
+							<textarea name="sql" class="text-box" style="padding:10px 0;width:100%;height:300px;line-height:20px;"><{$sql}></textarea>
+						</div>
+					</li>
+					<li class="dark-row">
+						<span class="col_width">&nbsp;  </span>
+						<input type="submit" class="button"  value="执行SQL语句">
+					</li>					
+				</ul>
+			</form>
+			</div>
+		</div>
+<{include file="public/footer.html"}>	
+
+

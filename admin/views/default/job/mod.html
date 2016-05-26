@@ -1,0 +1,51 @@
+<{include file="public/head.html"}>
+		<div id="main">
+		  	<div class="head-dark-box">
+				<div class="tit">后台管理 > 招聘管理 > 修改招聘职位</div>
+			</div>	
+			<{ include file="public/title.html" }>
+		    <form name="article" method="post" action="<{$url}>/update">
+			<div class="msg-box">
+				<ul class="viewmess">
+					<li class="dark-row">
+						<span class="col_width">招聘名称 [ 职位 ] <span class="red_font">*</span> </span>
+						<input type="text" name="title" value="<{$post.title}>" title="请填写招聘职位名称" class="text-box"/>
+					</li>
+					<li class="light-row">
+						<span class="col_width">工作地址 <span class="red_font">*</span> </span>
+						<input type="text" name="address" size="50" value="<{$post.address}>" title="请填写工作地址" class="text-box"/>
+					</li>
+					<li class="dark-row">
+						<span class="col_width">招聘人数 <span class="red_font">*</span> </span>
+						<input type="text" name="number" value="<{$post.number}>" size="5" title="请填写招聘人数" maxlength="3" class="text-box"/>&nbsp;人
+					</li>
+					<li class="dark-row">
+						<span class="col_width">工资代遇 <span class="red_font">*</span> </span>
+						<input type="text" name="treatment" value="<{$post.treatment}>" size="10" title="请填写工资代遇" maxlength="10" class="text-box"/>&nbsp;元/月（0表示面议）
+					</li>					
+					<li class="light-row">
+						<span class="col_width">开始时间 <span class="red_font">*</span> </span>
+						<{$starttime}>&nbsp;&nbsp;招聘开始时间
+					</li>
+					<li class="dark-row">
+						<span class="col_width">结束时间 <span class="red_font">*</span> </span>
+						<{$endtime}>&nbsp;&nbsp;招聘结束时间，留空则长期有效.
+						<input type="button" onclick="document.getElementById('endtime').value=''" class="button" value="清空">
+					</li>					
+					<li class="light-row">
+					<textarea cols="80" rows="10" name="content"><{$post.content}></textarea>
+						<{$ck}>
+					</li>
+					<li class="dark-row">
+						<span class="col_width">&nbsp;  </span>
+						<input type="hidden" name="id" value="<{$post.id}>" />
+						<input type="submit" class="button"  value="修 改">&nbsp;&nbsp;
+						<input type="reset" class="button" value="重 置">
+					</li>
+				</ul>	
+			</div>
+                    </form>	
+		</div>
+<{include file="public/footer.html"}>	
+
+

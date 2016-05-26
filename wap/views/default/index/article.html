@@ -1,0 +1,22 @@
+<{include file="public/head.html"}>
+<script type="text/javascript" language="javascript">
+$(function(){
+	$("#send").click(function(){
+		if($("#listnum").val() > 1){
+			$.get("<{$url}>/artlist",{num:$("#listnum").val()},function(data,textStatus){
+				$("#artlist").html(data);
+				var p=parseInt($("#listnum").val())+<{$artsize}>;
+				$("#listnum").val(p);
+			})	
+		}
+		if($("#listnum").val() >= <{$total}>){
+			$("#send").html("加载完毕");
+		}
+	});
+	$("#send").trigger("click");//模拟操作
+});
+</script>
+	<div id="artlist">加载中……</div>
+	<div id="send" class="title" style="text-align:center;">加载更多</div>
+	<input type="hidden" value="<{$artsize}>" id="listnum"/>
+<{include file="public/footer.html"}>

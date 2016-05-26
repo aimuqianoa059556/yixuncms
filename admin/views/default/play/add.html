@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC
+          "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<{include file="public/head.html"}>
+		<div id="main">
+		  	<div class="head-dark-box">
+				<div class="tit">后台管理 > 幻灯管理 > 添加幻灯</div>
+			</div>	
+			<{ include file="public/title.html" }>
+		    <form name="article" method="post" action="<{$url}>/insert" enctype="multipart/form-data">
+			<div class="msg-box">
+				<ul class="viewmess">
+					<li class="light-row">
+						<span class="col_width">文章地址<span class="red_font">*</span></span>
+						article/aid/<{$article.id}>
+						<input type="hidden" name="aid" value="<{$article.id}>">
+					</li>
+					<li class="dark-row">
+						<span class="col_width">幻灯标题<span class="red_font">*</span></span>
+						 <input type="text" class="text-box" name="title" maxlength="80" size="40" value="<{ $article.title }>">
+					</li>
+					<li class="light-row">
+					
+						<span class="col_width">幻灯图片<span class="red_font">*</span></span>
+						<input type="file" name="pic" class="button" />
+				
+					</li>
+					<li class="dark-row">
+						<span class="col_width">开始日期<span class="red_font">*</span></span>
+						<{$starttime}> &nbsp;
+					
+					</li>
+					<li class="light-row">
+						<span class="col_width">失效日期<span class="red_font">*</span></span>
+						<{$endtime}> &nbsp;<input type="button" onclick="document.getElementById('endtime').value=''" class="button" value="清空"> (留空则为长期显示)
+					</li>
+
+				
+					<li class="dark-row">
+						<span class="col_width">是否显示</span>
+						
+						<input type="radio" name="display"  <{if $post.display eq "1" or $post.display eq null}> checked <{/if}> value="1"> 是
+						<input type="radio" name="display" <{if $post.display eq "0" }> checked <{/if}> value="0"> 否
+					</li>
+					<li class="light-row">
+						<span class="col_width">&nbsp;  </span>
+						<input type="submit" class="button" value="添加幻灯">&nbsp;&nbsp;
+						<input type="reset" class="button" value="重置幻灯">
+					</li>
+				</ul>	
+			</div>
+                    </form>	
+		</div>
+<{include file="public/footer.html"}>	
+
+

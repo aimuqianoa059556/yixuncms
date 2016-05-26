@@ -1,0 +1,1 @@
+<?php {"pri":"id","0":"nickname","1":"telephone","2":"address","3":"email","4":"msn","5":"title","6":"posttime","7":"content"}yes

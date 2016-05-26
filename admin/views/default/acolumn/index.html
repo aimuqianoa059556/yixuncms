@@ -1,0 +1,43 @@
+<script>
+	var url='<{$url}>';
+</script>
+<{include file="public/head.html"}>
+	<div id="main">
+		<div class="head-dark-box">
+			<div class="tit">基本管理 > 单页栏目管理 > 管理单页栏目</div>
+		</div>
+		<{include file="public/title.html"}>
+		<form action="<{$url}>/order" method="post">
+		<div class="msg-box">
+			<ul class="viewmess">
+				<li class="dark-row">
+					<span class="list_width width_font">栏目名称</span>
+					<span class="list_width width_font">操作</span>
+				</li>
+				<{foreach $list as $row}>
+				<li>
+					<span class="list_width">
+					<input type="hidden" name="ids[]" value="<{ $row.id }>">
+					<input class="text-box" type="text" name="ord[]" style="width:20px" maxlength="3" value="<{ $row.ord }>">&nbsp;
+					<{$row.title}><font color="red">（ID:<{$row.id}>）</font></span>
+					<span class="list_width">
+					<a href="<{$url}>/mod/id/<{$row.id}>">编辑</a>
+					<{if $row.id ne 1}>
+					<a href="<{$url}>/del/id/<{$row.id}>" onclick="return confirm('确定要删除该栏目吗？')">删除</a>
+					<{/if}>
+					</span>
+				</li>
+				<{foreachelse}><li class="light-row">
+				暂无栏目请先行添加</li>
+				<{/foreach}>
+				<li class="dark-row">
+					<span class="col_width" style="margin-left:20px;width:540px"> 
+						<input class="button" name="order" type="submit" value="排 序">
+					 </span> 
+				</li>
+				
+			</ul>
+		</div>
+		</form>
+	</div>
+<{include file="public/footer.html"}>

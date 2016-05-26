@@ -1,0 +1,52 @@
+<{include file="public/head.html"}>
+		<div id="main">
+		  	<div class="head-dark-box">
+				<div class="tit">后台管理 > 导航管理 > 添加导航栏目</div>
+			</div>	
+			<{ include file="public/title.html" }>
+		    <form name="article" method="post" action="<{$url}>/insert" enctype="multipart/form-data">
+			<div class="msg-box">
+				<ul class="viewmess">
+					<li class="dark-row">
+						<span class="col_width">所属导航 <span class="red_font">*</span> </span>
+						<select name="pid" class="text-box">
+						<option value="0">顶级导航</option>
+						<{foreach $menucat as $row}>
+							<option value="<{$row.id}>" <{if $row.id eq $selected}>selected<{/if}>><{$row.title}></option>
+						<{/foreach}>
+						</select><input type="checkbox" name="jz" <{$jz}> value="1" />记住选项
+					</li>
+					<li class="light-row">
+						<span class="col_width">导航名称 <span class="red_font">*</span> </span>
+						<input type="text" name="title" size="30" value="<{$post.title}>" title="请填写导航标题" class="text-box"/>
+					</li>
+					<li class="dark-row">
+						<span class="col_width">目标 <span class="red_font">*</span> </span>
+							<select name="target" class="text-box">
+								<option value="_self" <{if $post.target eq '_self'}>selected<{/if}>>_self</option>
+								<option value="_blank" <{if $post.target eq '_blank'}>selected<{/if}>>_blank</option>
+								<option value="_top" <{if $post.target eq '_top'}>selected<{/if}>>_top</option>
+								<option value="_parent" <{if $post.target eq '_parent'}>selected<{/if}>>_parent</option>
+							</select>
+					</li>
+					<li class="light-row">
+						<span class="col_width">URL<span class="red_font">*</span> </span>
+						<input type="text" name="url" size="40" value="<{$post.url}>" title="请填写导航URL地址" class="text-box"/>
+					</li>									
+					<li class="dark-row">
+						<span class="col_width">是否显示</span>
+						<input type="radio" name="audit"  <{if $post.display eq "1" or $post.display eq null}> checked <{/if}> value="1"> 显示
+						<input type="radio" name="audit" <{if $post.display eq "0" }> checked <{/if}> value="0"> 不显示
+					</li>
+					<li class="light-row">
+						<span class="col_width">&nbsp;  </span>
+						<input type="submit" class="button" value="添 加">&nbsp;&nbsp;
+						<input type="reset" class="button" value="重 置">
+					</li>
+				</ul>	
+			</div>
+           </form>	
+		</div>
+<{include file="public/footer.html"}>	
+
+

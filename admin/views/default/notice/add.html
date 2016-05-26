@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC
+          "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<{include file="public/head.html"}>
+	<div id="main">
+		<div class="head-dark-box">
+			<div class="tit">基本管理 > 公告管理 > 添加公告</div>
+		</div>
+		<{include file="public/title.html"}>
+		<form action="<{$url}>/insert" method="post">
+		<div class="msg-box">
+			<ul class="viewmess">
+				<li class="light-row">
+					<span class="col_width">公告标题 <span class="red_font">*</span></span>
+					<input type="text" name="title" maxlength="80" size="30" value="<{$post.title}>" class="text-box"/>&nbsp;<{$color}>单击为标题选择颜色
+				</li>
+				<li class="dark-row">
+					<span class="col_width">起始日期 <span class="red_font">*</span></span>
+					<{$starttime}>公告开始时间
+				</li>
+				<li class="light-row">
+					<span class="col_width">截止日期</span>
+					<{$endtime}>公告结束时间（留空则长期有效）
+					<input type="button" onclick="document.getElementById('endtime').value=''" class="button" value="清空">
+				</li>
+				<li class="dark-row">
+					<span class="col_width" style="float:left;padding-top:30px;height:190px">公告内容 <span class="red_font">*</span></span>
+					<span style="float:left;height:150px;width:530px;">
+					<textarea name="content" cols="150" rows="5"><{$post.content}></textarea>
+					<{$ck}>
+					</span>
+				</li>
+				<li class="light-row">
+					<span class="col_width">是否显示</span>
+					<input type="radio" name="display" <{if $post.display eq 1}>checked<{/if}> value="1" />是
+					<input type="radio" name="display" <{if $post.display eq 0}>checked<{/if}> value="0" />否
+				</li>
+				<li class="dark-row">
+					<span class="col_width">&nbsp;</span>
+					<input type="submit" value="添加公告" class="button" />
+					<input type="reset" value="重置公告" class="button" />
+					</span>
+				</li>				
+			</ul>
+		</div>
+		</form>
+	</div>
+<{include file="public/footer.html"}>

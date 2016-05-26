@@ -1,0 +1,32 @@
+<{include file="public/head.html"}>
+	<div id="main">
+		<div class="head-dark-box">
+			<div class="tit">基本管理 > 单页栏目管理 > 添加单页栏目</div>
+		</div>
+		<{include file="public/title.html"}>
+		<form action="<{$url}>/insert" method="post">
+		<div class="msg-box">
+			<ul class="viewmess">
+				<li class="dark-row">
+					<span class="col_width">栏目标题 <span class="red_font">*</span> </span>
+					<input type="text" name="title" size="20" value="<{$post.title}>" class="text-box" />
+				</li>
+				<li class="light-row">
+					<span class="col_width" style="margin-top:30px;">栏目描述 <span class="red_font">*</span> </span>
+					<textarea name="description" cols="30" rows="5" class="text-box"><{$post.description}></textarea>
+				</li>
+				<li class="dark-row">
+					<span class="col_width">是否开启</span>
+					<input type="radio" name="audit" value="1" <{if $post.audit eq "1" or $post.audit eq ""}>checked<{/if}>/>是
+					<input type="radio" name="audit" value="0" <{if $post.audit eq "0"}>checked<{/if}>/>否
+				</li>
+				<li class="light-row">
+					<span class="col_width"></span>
+					<input type="submit" class="button" value="添加栏目" />
+					<input type="reset" class="button" value="重 置" />
+				</li>				
+			</ul>
+		</div>
+		</form>
+	</div>
+<{include file="public/footer.html"}>

@@ -1,0 +1,43 @@
+<{include file="public/head.html"}>
+	<div id="main">
+		<div class="head-dark-box">
+			<div class="tit">基本管理 > 友情链接 > 管理友情链接</div>
+		</div>
+		<{include file="public/title.html"}>
+		<form action="<{$url}>/ord" method="post">
+		<div class="msg-box">
+			<ul class="viewmess">
+				<li class="dark-row">
+					<span class="list_width width_font">网站名称</span>
+					<span class="list_width width_font" style="width:90px;">网站LOGO</span>
+					<span class="list_width width_font" style="width:80px;">网站联系人</span>
+					<span class="list_width width_font">添加时间</span>
+					<span class="list_width width_font">操作</span>
+				</li>
+				<{foreach $links as $row}>
+				<li class="<{if $row@index is even}>light-row<{else}>dark-row<{/if}>" style="<{if $row.audit eq 0}>background:#FAECBA;<{/if}>padding-bottom:2px;padding-top:2px;">
+					<span class="list_width"><input type="text" name="ord[]" value="<{$row.ord}>" maxlength="3" style="width:20px;" />&nbsp;<a href="<{$row.url}>" target="_blank"><{$row.webname}></a></span>
+					<input type="hidden" name="ids[]" value="<{$row.id}>" />
+					<span class="list_width" style="width:90px;"><img src="<{$public}>/uploads/logos/<{$row.logo}>" width="88" height="31" /></span>
+					<span class="list_width" style="width:80px;"><{$row.rname}></span>
+					<span class="list_width"><{$row.dtime|date_format:"%Y-%m-%d"}></span>
+					<span class="list_width" style="width:160px;">
+					【<a href="<{$url}>/mod/id/<{$row.id}>">修改</a>】
+					【<a href="<{$url}>/del/id/<{$row.id}>" onclick="return confirm('确定要删除友情链接【<{$row.webname}>】吗？')" >删除</a>】
+					</span>
+				</li>
+				<{foreachelse}>
+				<li>暂无友情链接</li>
+				<{/foreach}>
+				<li class="dark-row">
+					<span class="col_width" style="margin-left:20px;width:300px;">
+						<input class="button" name="order" type="submit" value="改变显示顺序">&nbsp;&nbsp;&nbsp;&nbsp;
+						<a href="<{$url}>/index/display/off" style='<{if $smarty.get.display eq "off"}>background:#888;color:white;<{/if}>'>不显示</a>&nbsp;|
+						<a href="<{$url}>/index/display/on" style='<{if $smarty.get.display eq "on"}>background:#888;color:white;<{/if}>'>显示</a>
+					</span>
+				</li>
+			</ul>
+		</div>
+		</form>
+	</div>
+<{include file="public/footer.html"}>

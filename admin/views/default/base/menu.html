@@ -1,0 +1,89 @@
+<{include file="public/head.html"}>
+		<div id="main">
+		  	<div class="head-dark-box">
+				<div class="tit">后台管理 > 页面导航 > 导航设置</div>
+			</div>	
+			<{ include file="public/title.html" }>
+			<div class="msg-box">
+				<ul class="viewmess">
+					<li class="dark-row">
+						<span class="list_width width_font" style="width:30px;">排序</span>
+						<span class="list_width width_font" style="width:110px;">栏目名称</span>
+						<span class="list_width width_font" style="width:110px;">目标</span>
+						<span class="list_width width_font" style="width:322px;">URL</span>
+						<span class="list_width width_font" style="width:50px;">显示</span>
+						<span class="list_width width_font">操&nbsp;&nbsp;作</span>
+					</li>
+					<{ section name=doc loop=$menu }>
+					<form action="<{$url}>/menuupdate" method="post">
+					<li class="<{if $smarty.section.doc.index is even}>light-row<{else}>dark-row<{/if}>" style="padding-top:5px; padding-bottom:5px">
+						<span class="list_width" style="width:30px">
+						<{if $menu[doc].pid eq 0}>
+							<input type="text" name="ord" class="text-box" style="width:20px" maxlength="3" value="<{ $menu[doc].ord }>">
+						<{else}>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-
+						<{/if}>
+						</span>
+						<span class="list_width" style="width:110px">
+							<input type="text" name="title" class="text-box" style="width:100px" maxlength="10" value="<{$menu[doc].title}>">&nbsp;
+						</span>
+						<span class="list_width" style="width:110px">
+							<select name="target" class="text-box">
+								<option value="_self" <{if $menu[doc].target eq '_self'}>selected<{/if}>>_self</option>
+								<option value="_blank" <{if $menu[doc].target eq '_blank'}>selected<{/if}>>_blank</option>
+								<option value="_top" <{if $menu[doc].target eq '_top'}>selected<{/if}>>_top</option>
+								<option value="_parent" <{if $menu[doc].target eq '_parent'}>selected<{/if}>>_parent</option>
+							</select>
+						</span>						
+						<span class="list_width" style="width:330px">
+							<input type="text" name="url" class="text-box" style="width:300px" maxlength="100" value="<{$menu[doc].url}>">&nbsp;
+						</span>	
+						<span class="list_width" style="width:40px;">
+							<{if $menu[doc].display eq 1 }>
+								<span title="审核：<{$menu[doc].title}>" onclick="set(this,'display',<{$menu[doc].id}>)" style="color:#FE488B;cursor:pointer;">√</span>
+							<{else}>
+								<span title="取消审核：<{$menu[doc].title}>" onclick="set(this,'display',<{$menu[doc].id}>)" style="color:#0000F6;cursor:pointer;">×</span>
+							<{/if}>	
+						</span>
+						<span class="list_width">
+							<input type="hidden" name="id" value="<{$menu[doc].id}>" />
+							<input type="submit" value="更新" class="text-box" style="background-color:#fff;"/>
+							<input type="button" value="删除" class="text-box" style="background-color:#fff;" onclick="if(confirm('确定要删除吗?')) window.location='<{$url}>/menudel/id/<{$menu[doc].id}>'"/>
+						</span>
+					</li>
+					</form>
+					<{ sectionelse }>
+						<li class="light-row" style="padding-left:10px;">
+							本页没有扩展.
+						</li>					
+					<{/section}>
+					<li class="dark-row">
+						<input type="button" value="新增导航栏目" class="text-box" style="background-color:#fff;" onclick="window.location='<{$url}>/menuadd'"/>					
+					</li>					
+	<script>
+	function set(obj, stat, id){
+		var ajax=Ajax();
+		if(obj.innerHTML=="√"){
+			ajax.get("<{$url}>/status/s/"+stat+"/id/"+id+"/val/0", function(data){
+				if(data=="1"){
+					ieff(obj, "×");
+					obj.style.color="#0000F6";
+				}
+			
+			});
+		}else{
+			ajax.get("<{$url}>/status/s/"+stat+"/id/"+id+"/val/1", function(data){
+				if(data=="1"){
+					ieff(obj, "√");
+					obj.style.color="#FE488B";
+				}
+			});
+		}
+	}
+	</script>
+				</ul>	
+			</div>
+		</div>
+<{include file="public/footer.html"}>	
+
+

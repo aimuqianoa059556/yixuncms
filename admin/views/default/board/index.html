@@ -1,0 +1,48 @@
+<{include file="public/head.html"}>
+		<div id="main">
+		  	<div class="head-dark-box">
+				<div class="tit">后台管理 > 留言管理 > 管理留言</div>
+			</div>	
+			<{ include file="public/title.html" }>
+		    <form  method="post" action="<{$url}>/fpro/page/<{$page}>">
+			<div class="msg-box">
+				<ul class="viewmess">
+					<li class="dark-row">
+						<span class="list_width width_font" style="width:190px">主题</span>
+						<span class="list_width width_font" style="width:110px">留言人</span>
+						<span class="list_width width_font" style="width:120px">电话</span>
+						<span class="list_width width_font" style="width:95px;">留言时间</span>
+						<span class="list_width width_font">操&nbsp;&nbsp;作</span>
+					</li>
+				        <{ section name=doc loop=$arts }>
+						<li class="<{if $smarty.section.doc.index is even}>light-row<{else}>dark-row<{/if}>" style="padding-top:2px; padding-bottom:2px">
+							<span class="list_width" style="width:190px"><input type="checkbox" name="id[]" value="<{ $arts[doc].id }>"><a href="#" onclick="showWin('<{$url}>/open/id/<{ $arts[doc].id }>')"><{ $arts[doc].title|truncate:16 }></a></span>
+							<span class="list_width" style="width:80px"><{$arts[doc].nickname}></span>
+							<span class="list_width" style="width:120px"><{$arts[doc].telephone}></span>
+							<span class="list_width" style="width:120px;text-align:center"><{ $arts[doc].posttime|date_format:"%Y-%m-%d" }></span>
+							
+							<span class="list_width" style="width:160px;">
+							【<a onclick="return confirm('确定要删除留言<{ $arts[doc].title }>吗？')" href="<{$url}>/del/id/<{ $arts[doc].id }>/page/<{$page}>">删除</a>】
+							</span>
+						</li>
+					<{ sectionelse }>
+						<li class="light-row">
+							暂无留言
+						</li>
+					<{ /section }>
+					<li class="dark-row">
+						<div class="col_width" style="margin-left:15px;width:100%"> 
+							<a href="javascript:select()">全选</a>/<a href="javascript:fanselect()">反选</a>/<a href="javascript:noselect()">全不选</a>&nbsp;&nbsp;选中项: 
+							<input  name="dels" type="image" title="删除" onClick="return confirm('你确定要删除选中的留言吗?')"  src="<{$res}>/images/delete.gif">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						 </div> 
+						<div class="right" style="width:100%;margin-top:10px;">
+							<{$fpage}>
+						</div>
+					</li>
+				</ul>	
+			</div>
+                    </form>
+		</div>
+<{include file="public/footer.html"}>	
+
+

@@ -1,0 +1,92 @@
+<{include file="public/head.html"}>
+	<!--content-->
+	<div class="clear"></div>
+	<div class="pagewidth content">
+			<div class="title blocktitle">首页 / 信息反馈</div>
+			<div class="bottombor con3">
+			<div style="text-align:center;font-size:30px;color:#000;">信息反馈</div>
+					<form action="<{$url}>/boardinsert" method="post">
+					<ul class="board">
+						<li>
+							<span class="sq1">您的姓名：</span>
+							<span id="sprytextfield1">
+							<input type="text" name="nickname" id="text1" class="sqmess" />
+								<span class="textfieldRequiredMsg bor-mess">请输入您的姓名或昵称</span>
+								<span class="textfieldMinCharsMsg bor-mess">姓名不能少于2个字符</span>
+								<span class="textfieldMaxCharsMsg bor-mess">姓名不能大于6个字符</span>
+							</span>
+						</li>
+						<li>
+							<span class="sq1">移动电话：</span>
+							<span id="sprytextfield2">
+								<input type="text" name="telephone" id="text2" class="sqmess" />
+								<span class="textfieldRequiredMsg bor-mess">请输入您的移动电话</span>
+								<span class="textfieldInvalidFormatMsg bor-mess">电话只能为数字</span>
+								<span class="textfieldMinCharsMsg bor-mess">移动电话为11位数字</span>
+								<span class="textfieldMaxCharsMsg bor-mess">移动电话位数超11位</span>
+							</span>
+						</li>
+						<li>
+							<span class="sq1">联系地址：</span>
+							<span id="sprytextfield5">
+							<input type="text" name="address" id="text5" class="sqmess" />
+								<span class="textfieldRequiredMsg bor-mess">请输入联系地址</span>
+								<span class="textfieldMinCharsMsg bor-mess">联系地址不能少于6个字符</span>
+							</span>
+						</li>
+						<li>
+							<span class="sq1">电子信箱：</span>
+							<span id="sprytextfield3">
+								<input type="text" name="email" id="text3" class="sqmess" />
+								<span class="textfieldRequiredMsg bor-mess">请输入您的常用邮件地址</span>
+								<span class="textfieldInvalidFormatMsg bor-mess">无效的电子邮件地址</span>
+							</span>
+						</li>
+						<li>
+							<span class="sq1">QQ：</span>
+							<span id="sprytextfield6">
+								<input type="text" name="msn" id="text6" class="sqmess" />
+								<span class="textfieldRequiredMsg bor-mess">请输入您常用的QQ号码</span>
+								<span class="textfieldInvalidFormatMsg bor-mess">QQ号码只能为数字</span>
+								<span class="textfieldMinCharsMsg bor-mess">QQ号码为不能少于6位数字</span>
+								<span class="textfieldMaxCharsMsg bor-mess">QQ号码超11位</span>
+							</span>
+						</li>
+						<li>
+							<span class="sq1">留言主题：</span>
+							<span id="sprytextfield7">
+							<input type="text" name="title" id="text7" class="sqmess" />
+								<span class="textfieldRequiredMsg bor-mess">请输入您的留言标题</span>
+								<span class="textfieldMinCharsMsg bor-mess">标题不能少于2个字符</span>
+								<span class="textfieldMaxCharsMsg bor-mess">标题不能大于20个字符</span>
+							</span>
+						</li>
+						<li>
+							<span class="sq1">留言内容：</span>
+							<span id="sprytextarea1">
+							<textarea name="content" id="textarea1" cols="45" rows="5"></textarea>
+							已输入&nbsp;<span id="countsprytextarea1">&nbsp;</span>&nbsp;个字符
+								  <span class="textareaRequiredMsg">请填写您的留言内容</span>
+								  <span class="textareaMinCharsMsg">内容不能少于10个字符</span>
+								  <span class="textareaMaxCharsMsg">留言内容不能超过100个字符</span>
+							</span>					
+						</li>
+					</ul>
+					<div class="clear"></div>
+					<div style="margin-left:120px;"><input type="submit" value="送出留言" class="btn"/></div>
+					</form>
+<script type="text/javascript">
+var sprytextfield1 = new Spry.Widget.ValidationTextField("sprytextfield1", "none", {validateOn:["blur", "change"], minChars:2, maxChars:6});
+var sprytextfield2 = new Spry.Widget.ValidationTextField("sprytextfield2", "integer", {validateOn:["blur", "change"], minChars:11, maxChars:11, useCharacterMasking:true});
+var sprytextfield3 = new Spry.Widget.ValidationTextField("sprytextfield3", "email", {validateOn:["blur", "change"]});
+var sprytextfield4 = new Spry.Widget.ValidationTextField("sprytextfield4", "url", {validateOn:["blur", "change"]});
+var sprytextfield5 = new Spry.Widget.ValidationTextField("sprytextfield5", "none", {validateOn:["blur", "change"], minChars:6});
+var sprytextfield6 = new Spry.Widget.ValidationTextField("sprytextfield6", "integer", {validateOn:["blur", "change"], minChars:6, maxChars:11, useCharacterMasking:true});
+var sprytextfield7 = new Spry.Widget.ValidationTextField("sprytextfield7", "none", {validateOn:["blur", "change"], minChars:2, maxChars:20});
+var sprytextarea1 = new Spry.Widget.ValidationTextarea("sprytextarea1", {validateOn:["blur", "change"], minChars:10, maxChars:100, counterType:"chars_count", counterId:"countsprytextarea1"});
+</script>
+<div class="clear"></div>
+			</div>
+	</div>
+	<!--footer-->
+<{include file="public/footer.html"}>

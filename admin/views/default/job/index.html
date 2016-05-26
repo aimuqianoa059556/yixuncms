@@ -1,0 +1,45 @@
+<{include file="public/head.html"}>
+		<div id="main">
+		  	<div class="head-dark-box">
+				<div class="tit">后台管理 > 招聘管理 > 管理招聘信息</div>
+			</div>	
+			<{ include file="public/title.html" }>
+			<div class="msg-box">
+				<ul class="viewmess">
+					<li class="dark-row">
+						<span class="list_width width_font" style="width:250px;">招聘职位</span>
+						<span class="list_width width_font" style="width:100px;">起始时间</span>
+						<span class="list_width width_font" style="width:100px;">结束时间</span>
+						<span class="list_width width_font">操&nbsp;&nbsp;作</span>
+					</li>
+					<{ section name=doc loop=$arts }>
+					<li  class="<{if $smarty.section.doc.index is even}>light-row<{else}>dark-row<{/if}>" style="padding-top:5px; padding-bottom:5px">
+						<span class="list_width" style="width:250px">
+							<span title="产品编码：<{$arts[doc].pnum}>"><{$arts[doc].title}></span>
+						</span>
+						<span class="list_width" style="width:100px"><{$arts[doc].starttime|date_format:"%Y-%m-%d"}></span>
+						<span class="list_width <{if $arts[doc].endtime le $smarty.now and $arts[doc].endtime ne '0'}>red_font<{/if}>" style="width:100px;"><{if $arts[doc].endtime eq 0}>长期显示<{else}><{ $arts[doc].endtime|date_format:"%Y-%m-%d"}><{/if}></span>
+						<span class="list_width">
+							【<a href="<{$url}>/mod/id/<{$arts[doc].id}>">修改</a>】
+							【<a title="删除产品：<{$arts[doc].title}>" onclick="return confirm('确定要删除职位【<{ $arts[doc].title }>】吗？')" href="<{$url}>/del/id/<{ $arts[doc].id }>">删除</a>】
+						</span>
+					</li>
+					<{ sectionelse }>
+						<li class="light-row">
+							本页没有招聘信息
+						</li>					
+					<{/section}>
+					<li class="dark-row">
+						<span class="col_width" style="margin-left:20px;width:540px"> 
+							<a style='<{if $smarty.get.action eq "3"}>background:#888;color:white<{/if}>' href="<{$url}>/index/action/3">无期限的</a>&nbsp;|
+							<a style='<{if $smarty.get.action eq "4"}>background:#888;color:white<{/if}>' href="<{$url}>/index/action/4">过期的</a>&nbsp;|
+							<a style='<{if $smarty.get.action eq "5"}>background:#888;color:white<{/if}>' href="<{$url}>/index/action/5">没到期的</a>&nbsp;|
+							<a style='<{if $smarty.get.action eq ""}>background:#888;color:white<{/if}>' href="<{$url}>/index">全部显示</a>&nbsp;&nbsp;
+						 </span> 
+					</li>					
+				</ul>	
+			</div>
+		</div>
+<{include file="public/footer.html"}>	
+
+

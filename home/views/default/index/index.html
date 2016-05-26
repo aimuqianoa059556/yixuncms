@@ -1,0 +1,137 @@
+<{include file="public/head.html"}>
+	<!--content-->
+	<div class="clear"></div>
+	<div class="pagewidth content">
+		<div class="product">
+			<div class="title blocktitle">推荐阅读</div>
+			<div id="play">
+				<a href="#nogo" id="js_play">
+				<{section name=pic loop=$play max=6}>
+					<img src="<{$public}>/uploads/play/<{$play[pic].pic}>" alt="<{$play[pic].title}>" width="514" height="300"/>
+				<{sectionelse}>
+					<img src="<{$public}>/images/Yixun.jpg"/>
+				<{/section}>
+				</a>
+				<div>
+				<{foreach $play as $row}>
+					<a href="<{$app}>/article/article/aid/<{$row.aid}>"<{if $row@last}> class="last"<{/if}>><{$row@iteration}></a>
+				<{foreachelse}>
+					<a href="<{$app}>" class="last">1</a>
+				<{/foreach}>
+				</div>
+			</div>
+		</div>
+		<div class="about">
+			<div class="title blocktitle">企业概况</div>
+			<div class="bottombor con">
+				<{$about}>
+			</div>
+		</div>
+		<div class="contect">
+			<div class="title blocktitle">联系我们</div>
+			<div class="bottombor con">
+				<div id="s1" class="scroll">
+				<{foreach $notice as $row}>
+					<a target="_blank" href="<{$url}>/notice/id/<{$row.id}>" style="color:#<{$row.color}>;"><{$row.title}></a>|
+				<{foreachelse}>
+					<a target="_blank">欢迎光临我们的网站</a>|
+				<{/foreach}>
+				</div>
+				<{$contact}>
+			</div>
+		</div>		
+		<!--product-->
+		<div class="clear"></div>
+		<div class="productlist" id="one" style="display:none;">
+			<div class="title blocktitle">
+			<span class="promore">业务展示</span>
+			<a href="<{$app}>/photo/index/pid/2" title="更多"><img src="<{$res}>/images/more.png"></a>
+			</div>
+			<div class="bottombor">
+				<div class=blk_18>
+				<a onmouseup=ISL_StopUp_1() class=LeftBotton onmousedown=ISL_GoUp_1() onmouseout=ISL_StopUp_1() href="javascript:void(0);" title="Prive" target=_self></a>
+				<div class=pcont id=ISL_Cont_1>
+					<div class=ScrCont>
+						<div id=List1_1>
+						<{foreach $photo as $row}>
+							<span class=pl>
+							<a class=pl title="<{$row.title}>" href="<{$app}>/photo/photoshow/id/<{$row.id}>" target=_blank>
+								<img height="180" width="200" alt="" src="<{$public}>/uploads/phoimg/<{$row.pic}>"><{$row.title}>
+							</a>
+							</span>
+						<{/foreach}>
+						</div>
+						<div id=List2_1></div>
+					</div>
+				</div>
+				<a onmouseup=ISL_StopDown_1() class=RightBotton onmousedown=ISL_GoDown_1() onmouseout=ISL_StopDown_1() href="javascript:void(0);" title="Next" target=_self></a>
+				</div>
+				<SCRIPT type=text/javascript>
+				<!--
+				picrun_ini()
+				//-->
+				</SCRIPT>			
+			</div>
+		</div>
+	<{foreach $cols as $row}>
+	<div class="art" style="<{if $row@iteration % 2 eq 0}>float:right;<{/if}> display:none;">
+		<div class="title blocktitle">
+		<span class="artmore"><{$row.title}></span>
+			<a href="<{$app}>/article/index/pid/<{$row.id}>" title="更多"><img src="<{$res}>/images/more.png"></a>
+		</div>
+		<div class="bottombor conlist">
+		<div class="lfloat">
+			<a href="<{$app}>/article/index/pid/<{$row.id}>" title="<{$row.title}>">
+				<img src="<{$public}>/uploads/prcture/<{$row.imgname}>"/>
+			</a>
+		</div>
+		<div class="rfloat">
+			<ul>
+			<{foreach $row.art as $artitle}>
+				<li><span class="box"><a href="<{$app}>/article/article/aid/<{$artitle.id}>" title="<{$artitle.title}>"><{$artitle.title}></a></span><span><{$artitle.posttime|date_format:"Y-m-d"}></span></li>
+			<{foreachelse}>
+				<li><span class="box">暂无内容</span></li>				
+			<{/foreach}>
+			</ul>
+		</div>
+		</div>
+	</div>
+	<{if $row@iteration eq 2}>
+		<{foreach $ad as $adv}>
+			<a href="<{$adv.links}>" target="_blank"><img src="<{$public}>/uploads/advert/<{$adv.pic}>" style="margin-top:10px;"/></a>
+		<{/foreach}>
+	<{/if}>
+	<{/foreach}>
+	<div class="clear"></div>
+		<div class="productlist" id="two" style="display:none;">
+			<div class="title blocktitle">
+			<span class="promore">案例展示</span>
+			<a href="<{$app}>/photo/index/pid/4" title="更多"><img src="<{$res}>/images/more.png"></a>
+			</div>
+			<div class="bottombor">
+				<div class=blk_18>
+				<a onmouseup=ISL_StopUp_2() class=LeftBotton onmousedown=ISL_GoUp_2() onmouseout=ISL_StopUp_2() href="javascript:void(0);" title="Prive" target=_self></a>
+				<div class=pcont id=ISL_Cont_2>
+					<div class=ScrCont>
+						<div id=List1_2>
+						<{foreach $project as $row}>
+							<a class=pl title="<{$row.title}>" href="<{$app}>/photo/photoshow/id/<{$row.id}>" target=_blank>
+								<img height="180" width="200" alt="" src="<{$public}>/uploads/phoimg/<{$row.pic}>"><{$row.title}>
+							</a>
+						<{/foreach}>
+						</div>
+						<div id=List2_2></div>
+					</div>
+				</div>
+				<a onmouseup=ISL_StopDown_2() class=RightBotton onmousedown=ISL_GoDown_2() onmouseout=ISL_StopDown_2() href="javascript:void(0);" title="Next" target=_self></a>
+				</div>
+				<SCRIPT type=text/javascript>
+				<!--
+				picrun_ini02()
+				//-->
+				</SCRIPT>		
+			</div>
+		</div>
+	</div>
+	<!--footer-->
+<{include file="public/footer.html"}>

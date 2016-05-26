@@ -1,0 +1,23 @@
+<{include file="public/head.html"}>
+<div class="top">
+	<div style="float:left;height:63px;">
+		<div style="font-family:黑体;font-size:14px;color:#FFFFFF;padding:10px 0px 10px 50px;">欢迎使用YiXunCMS企业网站后台管控系统增强版2.0.4.7（共享）</div>
+		<div style="padding-left:200px;">
+			<ul>
+				<li><a href="<{$url}>/menu/pd/one" target="menu">系统首页</a></li>
+				<li><a href="<{$url}>/menu/pd/two" target="menu">基本管理</a></li>
+				<li><a href="<{$url}>/menu/pd/three" target="menu">文章管理</a></li>
+				<li><a href="<{$url}>/menu/pd/four" target="menu">展示管理</a></li>
+				<li><a href="<{$url}>/menu/pd/five" target="menu">招聘管理</a></li>
+				<li><a href="<{$url}>/menu/pd/seven" target="menu">扩展管理</a></li>
+				<li><a href="<{$url}>/menu/pd/night" target="menu">手机网站</a></li>
+				<li><a href="<{$url}>/menu/pd/ten" target="menu">模板与数据</a></li>
+				<li><a href="<{$url}>/menu/pd/six" target="menu">维护与更新</a></li>
+				<li><a href="<{$url}>/menu/pd/eighth" target="menu">用户管理</a></li>
+				<li><a href="<{$root}>" target="_blank">网站首页</a></li>
+			</ul>
+		</div>
+	</div>
+	<div style="float:right;height:63px;padding:10px;color:#FFFFFF;">欢迎您-<span title="<{$smarty.session.description}>"><{ $smarty.session.username }></span>，【<{$smarty.session.groupname}>】【<a href="<{$app}>/login/logout" onclick="return confirm('你确定要退出系统吗？')" target="_top">退出系统</a>】</div>
+</div>
+<{include file="public/footer.html"}>

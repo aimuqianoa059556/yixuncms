@@ -1,0 +1,26 @@
+<{include file="public/head.html"}>
+		<div id="main">
+		  	<div class="head-dark-box">
+				<div class="tit">后台管理系统首页</div>
+			</div>	
+			<{ include file="public/title.html" }>
+			<div class="msg-box">
+				<div class="mar" style="line-height:22px;">
+				尊敬的【<{ $smarty.session.username }>】您好！今天是：<{$smarty.now|date_format:'%Y-%m-%d'}>，您是【<{$smarty.session.groupname}>】<br>
+				您的权限：<{$smarty.session.description}><br>
+				版本类型：共享版<br>
+				</div>
+			</div>
+			<div class="msg-box">
+				<div class="mar" style="line-height:22px;">
+				软件承诺：<br>
+				■&nbsp;
+				</div>
+			</div>
+			<div class="msg-box">
+<iframe src="http://www./" scrolling="no" width="100%" height="300" frameborder="0"></iframe>
+			</div>			
+		</div>
+<{include file="public/footer.html"}>	
+
+

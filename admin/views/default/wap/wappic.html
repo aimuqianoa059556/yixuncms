@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC
+          "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<{include file="public/head.html"}>
+		<div id="main">
+		  	<div class="head-dark-box">
+				<div class="tit">后台管理 > 手机网站管理 > 管理图片</div>
+			</div>	
+			<{ include file="public/title.html" }>
+		    <form name="article" method="post" action="<{$url}>/order" enctype="multipart/form-data">
+			<div class="msg-box">
+				<ul class="viewmess">
+					<li class="dark-row">
+						<span class="list_width width_font" style="width:280px;">标题</span>
+						<span class="list_width width_font">操&nbsp;&nbsp;作</span>
+					</li>
+				        <{ section name=doc loop=$plays }>	
+							<li class="<{if $smarty.section.doc.index is even}>light-row<{else}>dark-row<{/if}>" style="padding-top:2px; padding-bottom:2px">
+					
+							<span class="list_width" style="width:250px;"><input type="text" name="ord[]" style="width:20px" maxlength="3" value="<{ $plays[doc].ord }>">&nbsp;<{ $plays[doc].title }></span>
+						
+							<input type="hidden" name="ids[]" value="<{ $plays[doc].id }>">								
+							<span class="list_width" style="width:120px;">
+							【<a href="<{$url}>/mod/id/<{ $plays[doc].id }>">修改</a>】
+							【<a onclick="return confirm('确定要删除焦点图片【<{ $plays[doc].title }>】吗？')" href="<{$url}>/del/id/<{ $plays[doc].id }>">删除</a>】
+							</span>
+						</li>
+					<{ sectionelse }>
+						<li class="light-row">
+							暂无图片
+						</li>
+					<{ /section }>
+				
+					<li class="dark-row">
+						<span class="col_width" style="margin-left:20px;width:540px"> 
+							<input class="button" name="order" type="submit" value="调整顺序">
+						</span> 
+					
+					</li>
+				</ul>	
+			</div>
+                    </form>	
+		</div>
+<{include file="public/footer.html"}>	
+
+

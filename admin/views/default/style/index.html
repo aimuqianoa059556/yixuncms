@@ -1,0 +1,31 @@
+<{include file="public/head.html"}>
+<style>
+ul{padding:10px;}
+ul li{width:150px;text-align:center;float:left;}
+ul li .s{margin-bottom:10px;padding:10px;border-right:1px solid #ccc;border-bottom:1px solid #ccc;border-top:1px solid #eaeaea;border-left:1px solid #eaeaea;}
+</style>
+	<div id="main">
+		<div class="head-dark-box">
+			<div class="tit">系统管理-常规设置-模板管理</div>
+		</div>	
+		<{include file="public/title.html" }>
+			<div class="msg-box">
+			<ul>
+				<{ foreach name=info key=key item=item from=$style }>
+					<li>
+					<img src="<{$root}>/home/views/<{ $key }>/<{ $key }>.jpg" width="120" class="s"/>
+					<br/><{ $item }>
+						<br/>
+						<img onclick="return confirm('此版本不支持缷载，请手动缷载！')" src="<{$res}>/images/del-02.gif" style="margin-top:10px;cursor:pointer;"/>
+					</li>
+				<{ /foreach }>
+					<li>
+					<a href="<{$url}>/add" title="增加模板">
+					<img src="<{$res}>/images/addstyle.jpg" width="120" class="s"/>
+					</a>
+					</li>			
+				<div style="clear:both;"></div>
+			</ul>	
+			</div>		
+	</div>
+<{include file="public/footer.html"}>

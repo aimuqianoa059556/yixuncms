@@ -1,0 +1,53 @@
+<{include file="public/head.html"}>
+	<div id="main">
+		<div class="head-dark-box">
+			<div class="tit">基本管理 > 友情链接 > 添加友情链接</div>
+		</div>
+		<{include file="public/title.html"}>
+		<form action="<{$url}>/insert" method="post">
+		<div class="msg-box">
+			<ul class="viewmess">
+				<li class="light-row">
+					<span class="col_width">网站名称<span class="red_font">*</span></span>
+					<input type="text" name="webname" maxlength="30" size="20" value="<{$post.webname}>" class="text-box"/>
+				</li>
+				<li class="dark-row">
+					<span class="col_width">地&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址<span class="red_font">*</span></span>
+					<input type="text" name="url" maxlength="60" size="40" value="<{$post.url}>" class="text-box"/>&nbsp; 例如：http://www.38900.com
+				</li>
+				<li class="light-row">
+					<span class="col_width">LOGO<span class="red_font">*</span></span>
+					<input type="text" name="logo" maxlength="100" size="40" value="<{$post.logo}>" class="text-box"/> &nbsp;网站LOGO图片的真实URL地址，将自动下载到本地。
+				</li>
+				<li class="dark-row">
+					<span class="col_width">网站描述</span>
+					<textarea class="text-box" name="msg" cols="50" rows="5"><{$post.msg}></textarea>
+				</li>
+				<li class="light-row">
+					<span class="col_width">联系人<span class="red_font">*</span></span>
+					<input type="text" name="rname" maxlength="30" size="10" value="<{$post.rname}>" class="text-box"/> &nbsp;
+				</li>
+				<li class="dark-row">
+					<span class="col_width">站长邮箱<span class="red_font">*</span></span>
+					<input type="text" name="email" maxlength="60" size="30" value="<{$post.email}>" class="text-box"/>
+				</li>
+				<li class="light-row">
+					<span class="col_width">显示方式<span class="red_font">*</span></span>
+					<input type="radio" name="list" value="0" <{if $post.list eq "0" or $post.list eq null}>checked<{/if}>/>网站名称
+					<input type="radio" name="list" value="1" <{if $post.list eq "1"}>checked<{/if}>/>LOGO图片
+				</li>
+				<li class="dark-row">
+					<span class="col_width">是否显示<span class="red_font">*</span></span>
+					<input type="radio" name="audit" value="0" <{if $post.audit eq "0" or $post.audit eq null}>checked<{/if}>/>不显示
+					<input type="radio" name="audit" value="1" <{if $post.audit eq "1"}>checked<{/if}>/>显示
+				</li>
+				<li class="light-row">
+					<span class="col_width"></span>
+					<input type="submit" class="button" name="mod" value="新增链接" />
+					<input type="reset" class="button" value="清除重置" />
+				</li>				
+			</ul>
+		</div>
+		</form>
+	</div>
+<{include file="public/footer.html"}>

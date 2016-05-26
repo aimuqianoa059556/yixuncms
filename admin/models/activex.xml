@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<form>
+	<input name="title" type="notnull" msg="插件名称不能为空" />
+	<input name="content" type="notnull" msg="插件内容不能为空" />
+</form>	

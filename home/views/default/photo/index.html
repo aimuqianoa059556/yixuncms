@@ -1,0 +1,49 @@
+<{include file="public/head.html"}>
+<script>
+	var res="<{$res}>";
+</script>
+	<!--content-->
+	<div class="clear"></div>
+	<div class="pagewidth content">
+		<div class="left">
+		<{foreach $phc as $row}>
+			<div class="title blocktitle leftcolumn"<{if $row@iteration ne 1}> style="margin-top:10px;"<{/if}>><{$row.title}><span>-</span></div>
+			<div class="bottombor">
+				<ul class="aboutcolumn">
+				<{foreach $row.scolumn as $son}>
+					<li><a href="<{$url}>/index/pid/<{$son.id}>" title="<{$son.title}>" class="btn"><{$son.title}></a></li>
+				<{/foreach}>
+				<div class="clear"></div>	
+				</ul>
+			</div>
+		<{/foreach}>
+		<{foreach $ad as $adv}>
+			<a href="<{$adv.links}>" target="_blank"><img src="<{$public}>/uploads/advert/<{$adv.pic}>" style="margin-top:8px;width:100%;"/></a>
+		<{/foreach}>
+			<div class="title blocktitle" style="margin-top:10px;">联系方式</div>
+			<div class="bottombor con2">
+				<{$contact}>
+			</div>			
+		</div>
+		<div class="right">
+			<div class="title blocktitle">首页 <{foreach $locs as $row}>/ <{$row.title}> <{/foreach}></div>
+			<div class="bottombor con2">
+				<ul class="pro">
+				<{foreach $photos as $row}>
+					<li class="jl"<{if $row@iteration mod 3 eq 0}> style="margin-right:0px;"<{/if}>>
+					<a href="<{$url}>/photoshow/id/<{$row.id}>" title="<{$row.title}>">
+					<img data-original="<{$public}>/uploads/phoimg/<{$row.pic}>" alt="<{$row.title}>" width="270" height="200" class="borr lazy"/><br><{$row.title}>
+					</a>
+					<{if $row.top eq 1}><div class="allow"><img src="<{$public}>/images/jl.png"></div><{/if}>
+					</li>
+				<{foreachelse}>
+					该分类下暂无展示，欢迎浏览其它内容...
+				<{/foreach}>
+				<div class="clear"></div>
+				</ul>
+				<div class="fpage"><{$fpage}></div>
+			</div>
+		</div>
+	</div>
+	<!--footer-->
+<{include file="public/footer.html"}>

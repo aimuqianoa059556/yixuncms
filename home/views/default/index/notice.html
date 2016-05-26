@@ -1,0 +1,15 @@
+<{include file="public/head.html"}>
+	<!--content-->
+	<div class="clear"></div>
+	<div class="content" style="width:1180px;margin:10px auto;">
+		<div class="title blocktitle">首页 / 站内公告</div>
+		<div class="bottombor con3">
+		<div  class="newbigtitle" style="color:#<{$notice.color}>;"><{$notice.title}></div>
+			<div class="column">发布时间：<{$notice.starttime|date_format:"%Y-%m-%d"}></div>
+			<div class="procontent">
+				<{$notice.content}>	
+			</div>
+		</div>
+	</div>
+	<!--footer-->
+<{include file="public/footer.html"}>

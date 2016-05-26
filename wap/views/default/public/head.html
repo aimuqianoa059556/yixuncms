@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<title><{$appname}></title>
+<link type="text/css" rel="stylesheet" href="<{$res}>/css/wap.css">
+<script src="<{$res}>/js/jquery.js"></script>
+<script src="<{$res}>/js/wap.js"></script>
+<script src="<{$res}>/js/marquee.js"></script>
+</head>
+
+<body>
+<div id="pane1">
+	<ul>
+	<{foreach $menu as $row}>
+		<li><a href="<{$app}><{$row.url}>"><{$row.title}></a></li>
+	<{/foreach}>
+	</ul>
+</div>
+	<div class="top">
+		<div class="logo"><img src="<{$res}>/images/logo.png"/></div>
+		<div class="menu-btn"><img src="<{$res}>/images/menu-btn.gif"/></div>
+	</div>
+	<div id="jnImageroll">
+		<a href="#nogo" id="JS_imgWrap">
+		<{foreach $ban as $row}>
+			<img src="<{$public}>/uploads/wappic/<{$row.pic}>" />
+		<{/foreach}>
+		</a>
+		<div>
+		<{foreach $ban as $row}>
+			<a href="#"></a>
+		<{/foreach}>
+		</div>
+	</div>
+	<div class="clear"></div>
+	<div class="notice">
+		<div id="s1" class="scroll">
+		<{foreach $notice as $row}>
+			<a href="<{$app}>/index/notice/id/<{$row.id}>" target="_blank"><{$row.title}></a>|
+		<{/foreach}>
+		</div>
+	</div>

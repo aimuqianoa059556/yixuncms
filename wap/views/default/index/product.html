@@ -1,0 +1,24 @@
+<{include file="public/head-2.html"}>
+<script type="text/javascript" language="javascript">
+$(function(){
+	$("#send").click(function(){
+		if($("#listnum").val() >= 1){
+			$.get("<{$url}>/prolist",{num:$("#listnum").val()},function(data,textStatus){
+				$("#prolist").html(data);
+				var p=parseInt($("#listnum").val())+<{$psize}>;
+				$("#listnum").val(p);
+			})	
+		}
+		if($("#listnum").val() >= <{$total}>){
+			$("#send").html("加载完毕");
+		}
+	});
+	$("#send").trigger("click");//模拟操作
+});
+</script>
+	<div class="member-top">推荐业务<img src="<{$res}>/images/menu-btn-2.gif" class="member-btn-2"></div>
+	<div class="content" id="prolist">加载中……</div>
+	<div style="padding-bottom:20px;text-align:center;" id="send">加载更多</div>
+	<input type="hidden" value="<{$psize}>" id="listnum"/>
+	<div class="clear"></div>
+<{include file="public/footer.html"}>

@@ -1,0 +1,74 @@
+<{include file="public/head.html"}>
+		<div id="main">
+		  	<div class="head-dark-box">
+				<div class="tit">后台管理 > 扩展理 > 管理扩展</div>
+			</div>	
+			<{ include file="public/title.html" }>
+			<form action="<{$url}>/order" method="post">
+			<div class="msg-box">
+				<ul class="viewmess">
+					<li class="dark-row">
+						<span class="list_width width_font" style="width:150px;">扩展名称</span>
+						<span class="list_width width_font" style="width:100px;">显示</span>
+						<span class="list_width width_font">操&nbsp;&nbsp;作</span>
+					</li>
+					<{ section name=doc loop=$arts }>
+					<li class="<{if $smarty.section.doc.index is even}>light-row<{else}>dark-row<{/if}>" style="padding-top:5px; padding-bottom:5px">
+						<span class="list_width" style="width:150px">
+							<span title="<{$arts[doc].title}>">
+							<input type="hidden" name="ids[]" value="<{ $arts[doc].id }>">
+							<input type="text" name="ord[]" style="width:20px" maxlength="3" value="<{ $arts[doc].ord }>">&nbsp;
+							<{$arts[doc].title}></span>
+						</span>
+						<span class="list_width" style="width:100px;padding-left:10px;">
+							<{if $arts[doc].audit eq 1 }>
+								<span title="审核：<{$arts[doc].title}>" onclick="set(this,'audit',<{$arts[doc].id}>)" style="color:#FE488B;cursor:pointer;">√</span>
+							<{else}>
+								<span title="取消审核：<{$arts[doc].title}>" onclick="set(this,'audit',<{$arts[doc].id}>)" style="color:#0000F6;cursor:pointer;">×</span>
+							<{/if}>	
+						</span>
+						<span class="list_width">
+							【<a href="<{$url}>/mod/id/<{ $arts[doc].id }>">修改</a>】
+							<{if $arts[doc].id ne 1}>
+							【<a title="删除扩展：<{$arts[doc].title}>" onclick="return confirm('确定要删除单页【<{ $arts[doc].title }>】吗？')" href="<{$url}>/del/id/<{ $arts[doc].id }>">删除</a>】
+							<{/if}>
+						</span>
+					</li>
+					<{ sectionelse }>
+						<li class="light-row" style="padding-left:10px;">
+							本页没有扩展.
+						</li>					
+					<{/section}>
+					<li class="dark-row">
+						<span class="col_width" style="margin-left:20px;width:540px"> 
+							<input class="button" name="order" type="submit" value="排 序">
+						 </span> 
+					</li>					
+	<script>
+	function set(obj, stat, id){
+		var ajax=Ajax();
+		if(obj.innerHTML=="√"){
+			ajax.get("<{$url}>/status/s/"+stat+"/id/"+id+"/val/0", function(data){
+				if(data=="1"){
+					ieff(obj, "×");
+					obj.style.color="#0000F6";
+				}
+			
+			});
+		}else{
+			ajax.get("<{$url}>/status/s/"+stat+"/id/"+id+"/val/1", function(data){
+				if(data=="1"){
+					ieff(obj, "√");
+					obj.style.color="#FE488B";
+				}
+			});
+		}
+	}
+	</script>
+				</ul>	
+			</div>
+			</form>
+		</div>
+<{include file="public/footer.html"}>	
+
+

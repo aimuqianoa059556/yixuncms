@@ -1,0 +1,21 @@
+<{include file="public/head.html"}>
+		<div id="main">
+		  	<div class="head-dark-box">
+				<div class="tit">后台管理 > 数据库备份 > 管理数据库文件</div>
+			</div>
+			<{ include file="public/title.html" }>
+			<div class="msg-box">
+				<{$file}>
+				<div id="ccc" style="float:left;padding:20px;color:red;display:none;"><img src="<{$res}>/images/loading.gif">&nbsp;&nbsp;正在恢复，这可能需要几秒钟的时间，请稍侯……</div>
+			</div>
+		</div>
+		<script>
+			$(function(){
+				$("#cdf").click(function(){
+					$("#ccc").show();
+				})
+			})
+		</script>
+<{include file="public/footer.html"}>	
+
+

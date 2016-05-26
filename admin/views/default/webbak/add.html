@@ -1,0 +1,38 @@
+<{include file="public/head.html"}>
+		<div id="main">
+		  	<div class="head-dark-box">
+				<div class="tit">后台管理 > 网站备份管理 > 压缩文件</div>
+			</div>
+			<{ include file="public/title.html" }>
+			<div class="msg-box">
+				<form action="<{$url}>/zip" method="post">
+					<ul class="viewmess">
+						<li class="dark-row">
+							<span class="col_width" style="width:100px;">将您网站的</span>
+							<select name="dir" class="text-box">
+								<option value="./">整站压缩</option>
+								<option value="./wap/">手机站程序</option>
+								<option value="./admin/">后台程序</option>
+								<option value="./home/">前台程序</option>
+								<option value="./public/uploads/">已上传的图片</option>
+							</select>
+						</li>
+						<li>
+							<span class="col_width" style="width:100px;">&nbsp;  </span>
+							<input id="cdf" type="submit" class="button" value="开始压缩">&nbsp;&nbsp;					
+						</li>
+					</ul>
+				</form>
+<div id="ccc" style="float:left;padding:20px;color:red;display:none;"><img src="<{$res}>/images/loading.gif">&nbsp;&nbsp;正在备份文件，这可能需要几秒钟的时间期间请不要刷新页面，请稍侯……</div>
+			</div>
+		</div>
+		<script>
+			$(function(){
+				$("#cdf").click(function(){
+					$("#ccc").show();
+				})
+			})
+		</script>
+<{include file="public/footer.html"}>	
+
+
